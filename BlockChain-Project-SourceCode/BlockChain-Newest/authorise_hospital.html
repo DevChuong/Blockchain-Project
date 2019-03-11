@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Authorise Hospital</title>
+
+    <link rel="stylesheet" href="style.css" type = "text/css">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("button").click(function(){
+        try{
+          var HospitalName = $(".form-control:last").val();
+           contract.Authorise_Hospital($(".form-control").val(), $(".form-control:odd").val(), HospitalName, { from: account, gas: 3000000 });
+           setInterval(function() {
+             cache_clear()
+           });
+           // Give conditions if succeed, load the success deploy page. If fail, alert failure !
+           window.open('success_deploy_hospital.html');
+        }
+        catch(err){
+        if(account != web3.eth.accounts[0]){
+            alert("This account is not the National Authority account !");
+          } else {
+            alert("The Hospital Address has been already stored in the BlockChain !");
+          }
+
+        }
+
+// Code to get Block Number !
+    //  var transaction = web3.eth.getTransaction('0xee77e0891faacfac415bdd25e20dbd9a2a44868381a0e493a3a636e008d3da63');
+    //  console.log(transaction.blockNumber);
+  //  var receipt = web3.eth.getTransactionReceipt('0x30c8513fd5d7f2b7a178ed89621e241d8a5c9ee930e9ec72f3ab74c0f285131d');
+    //console.log(receipt);
+     //console.log(web3.eth.getTransaction('0x67e1728da2035350d36e266d59e8091559dd47f9a5840ec288c43ecafdc74436'));
+    /*var receipt = web3.eth.getTransactionCount('0xB8154261C65D5fE5473E6539419b81e1F843f02F');
+    console.log(receipt);*/
+});
+
+
+function cache_clear() {
+ window.location.reload(true);
+};
+  });
+
+    </script>
+  </head>
+  <body>
+      <div class="container-fluid">
+        <div class="title">
+          <h1>BLOCKCHAIN FOR HOSPITAL</h1>
+        </div>
+
+        <div class ="warning">
+          <h5>Make sure you are the National Authority !</h5>
+
+        </div>
+
+        <div class="hospital_info">
+          <h3>Hospital Address</h3>
+          <input type="text" class="form-control" placeholder="Please input the hospital address..">
+
+        </div>
+        <div class="hospital_info" >
+          <h3>Hospital ID</h3>
+          <input type="text" class="form-control" placeholder="Please input the hospital ID..">
+
+        </div >
+        <div class="hospital_info">
+          <h3>Hospital Name</h3>
+          <input type="text" class="form-control" placeholder="Please input the hospital name..">
+
+        </div>
+
+        <div class="authorise_button">
+
+            <button type="button" class="btn btn-primary" style="margin-top: 65px; margin-right: 270px; width: 235px; height: 65px;font-size: 24px;  float: right;
+            font-family: Lucida,Monaco, monospace;">Authorize</button>
+
+        </div>
+
+          <form>
+            <input type="button" value="DashBoard" style="margin-top: 65px; margin-right: 25px; width: 235px; height: 65px;font-size: 24px;  float: right;
+            font-family: Lucida,Monaco, monospace; background-color:orange;" onclick="window.location.href='index.html'" />
+          </form>
+        </div>
+
+        </div>
+
+        <footer>
+          <p style="margin: 0;margin-top: 150px; text-align:center;">Copyright © 2019 - Material published on this website is protected by copyright.</p><br>
+          <p style="margin: 0; text-align:center;"> You are expressly prohibited from electronically storing any material found here or republishing it by any means.</p>
+
+        </footer>
+
+
+        <script>
+          if(typeof web3 !== 'undefined'){
+            web3 = new Web3(web3.currentProvider);
+          } else {
+            web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"));
+          }
+
+          web3.eth.defaultAccount =  web3.eth.accounts[0];
+
+          var account = web3.eth.defaultAccount;
+
+          var contract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"name": "_TrHospitalName",
+				"type": "string"
+			}
+		],
+		"name": "Add_Employees",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"name": "_TrHospitaName",
+				"type": "string"
+			},
+			{
+				"name": "_Category",
+				"type": "string"
+			},
+			{
+				"name": "_TraineeCertificate",
+				"type": "string"
+			}
+		],
+		"name": "Add_Records",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_HospitalID",
+				"type": "uint256"
+			},
+			{
+				"name": "_HospitalName",
+				"type": "string"
+			}
+		],
+		"name": "Authorise_Hospital",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteEmployee",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_HospitalID",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteHospital",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_HospitalID",
+				"type": "uint256"
+			}
+		],
+		"name": "delete_Hospital",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_TrHospitaName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_Category",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeCertificate",
+				"type": "string"
+			}
+		],
+		"name": "add_Records",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "_NationalAuthority",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfHospitals",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_HospitalAddress",
+						"type": "address"
+					},
+					{
+						"name": "_HospitalID",
+						"type": "uint256"
+					},
+					{
+						"name": "_HospitalName",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getListOfOfficialEmployees",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfOfficialEmployees",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_Category",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTraineesRecords",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_Category",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "OfficialEmployees",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Authorised_Hospital",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]).at('0x40eea385db18e79c72f3d12e6d9cfe5074591be3');
+
+/*
+contract.options.from = '0xcdd1a177761125e2fa75d20071cc9437b25f1637'; // default from address
+contract.options.gasPrice = '20000000000000'; // default gas price in wei
+contract.options.gas = 5000000; // provide as fallback always 5M ga
+*/
+        </script>
+
+
+  </body>
+</html>
