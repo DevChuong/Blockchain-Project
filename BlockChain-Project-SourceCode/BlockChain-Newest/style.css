@@ -86,6 +86,37 @@ div#look_up h2 {
     font-family: Lucida,Monaco, monospace;
 }
 
+#banner h2{
+  text-align: center;
+    color: brown;
+    font-family: Lucida,Monaco, monospace;
+    font-weight: inherit;
+    padding-right: 150px;
+    margin-top:150px;
+}
+
+.span-caption {
+    display: inline-block;
+}
+
+span.caption1 {
+    clear: both;
+    display: inherit;
+    padding-left: 590px;
+    font-size: 30px;
+    color: darkblue;
+    font-family: Lucida,Monaco, monospace;
+}
+
+span.caption2 {
+    clear: both;
+    display: inherit;
+    padding-left: 280px;
+    font-size: 30px;
+    color: darkblue;
+    font-family: Lucida,Monaco, monospace;
+}
+
 span.glyphicon.glyphicon-search {
     font-size: 28px;
 }

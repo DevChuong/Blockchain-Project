@@ -130,7 +130,7 @@
             web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
           }
 
-          web3.eth.defaultAccount =  web3.eth.accounts[8];
+          web3.eth.defaultAccount =  web3.eth.accounts[9];
           var account = web3.eth.defaultAccount
 
           var contract = web3.eth.contract([
@@ -265,6 +265,51 @@
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getListOfTraineesRecords",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_Category",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -375,117 +420,6 @@
 		"constant": true,
 		"inputs": [
 			{
-				"name": "_TraineeAddress",
-				"type": "address"
-			}
-		],
-		"name": "getListOfOfficialEmployees",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getListOfOfficialEmployees",
-		"outputs": [
-			{
-				"components": [
-					{
-						"name": "_TraineeAddress",
-						"type": "address"
-					},
-					{
-						"name": "_TraineeID",
-						"type": "uint256"
-					},
-					{
-						"name": "_TraineeName",
-						"type": "string"
-					},
-					{
-						"name": "_TrHospitaName",
-						"type": "string"
-					},
-					{
-						"name": "_Category",
-						"type": "string"
-					},
-					{
-						"name": "_TraineeCertificate",
-						"type": "string"
-					}
-				],
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getListOfTraineesRecords",
-		"outputs": [
-			{
-				"components": [
-					{
-						"name": "_TraineeAddress",
-						"type": "address"
-					},
-					{
-						"name": "_TraineeID",
-						"type": "uint256"
-					},
-					{
-						"name": "_TraineeName",
-						"type": "string"
-					},
-					{
-						"name": "_TrHospitaName",
-						"type": "string"
-					},
-					{
-						"name": "_Category",
-						"type": "string"
-					},
-					{
-						"name": "_TraineeCertificate",
-						"type": "string"
-					}
-				],
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
 				"name": "",
 				"type": "uint256"
 			}
@@ -527,8 +461,43 @@
 		"payable": false,
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Records",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	}
-]).at('0x40eea385db18e79c72f3d12e6d9cfe5074591be3');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
         </script>
   </body>

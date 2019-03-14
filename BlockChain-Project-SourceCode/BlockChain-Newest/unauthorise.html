@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unauthorise Page</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="./node_modules/web3/dist/web3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="title">
+        <h1>BLOCKCHAIN FOR HOSPITAL</h1>
+      </div>
+        <div id="banner">
+          <h2>Please select one of those two below !</h2>
+        </div>
+      <div class="unauthorised-img">
+        <img src="https://tmicontractors.com/wp-content/uploads/2018/02/hospital-icon-300x300.png" onclick=window.open('unauthorise-hospital.html') style="width:200px; margin-top:100px;margin-left:550px;" alt="Hospital">
+        <img src="https://memegene.net/sites/default/files/wallpaper/person-icons/196888/person-icons-reference-196888-3653591.png" onclick=window.open('unauthorise-employee.html') style="width: 220px; margin-left:200px;margin-top:100px;
+    " alt="Employee">
+      </div>
+      <div class="span-caption">
+        <span class="caption1">Hospital</span><span class="caption2">Employee</span>
+
+      </div>
+
+      <footer>
+        <p style="margin: 0;margin-top: 150px; text-align:center;margin-right:150px;">Copyright © 2019 - Material published on this website is protected by copyright.</p><br>
+        <p style="margin: 0; text-align:center;margin-right:150px;"> You are expressly prohibited from electronically storing any material found here or republishing it by any means.</p>
+
+      </footer>
+
+      <script type="text/javascript">
+        if(typeof web3 !== 'undefined'){
+          web3 = new Web3(web3.currentProvider);
+        } else {
+          web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"));
+        }
+      </script>
+
+
+
+
+  </body>
+</html>
