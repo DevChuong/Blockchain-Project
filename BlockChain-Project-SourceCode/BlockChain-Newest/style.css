@@ -11,6 +11,8 @@ body {
   width: 100%;
 }
 
+
+
 ul.list-inline {
   padding-left: 50px;
   padding-right: 50px;
@@ -19,6 +21,29 @@ ul.list-inline {
 
 }
 
+
+.hospital_info_result{
+  margin: 300px;
+  width: 1200px;
+  font-size: 20px;
+  font-family: Lucida,Monaco, monospace;
+}
+
+tr{
+  width:100%;
+}
+
+th{
+  padding-right: 30px;
+  width:450px;
+  font-size: 20px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
 
 .title {
     width: 40%;
