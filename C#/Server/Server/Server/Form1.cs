@@ -142,31 +142,31 @@ namespace Server
                             {
                                 if (us._Socket.RemoteEndPoint.ToString() == s.RemoteEndPoint.ToString())
                                 {
-                                    int _nr = (int.Parse(receive[8].ToString()) + 1);
-                                    if (lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer.Count() >= 2)
+                                    int roomNumber = 1;
+                                    if (lstRoom.ListRoom[roomNumber].ListPlayer.Count() >= 2)
                                     {
                                         sendData("#_TCP_FULL", s);
                                     }
                                     else
                                     {
-                                        lstRoom.ListRoom[int.Parse(receive[8].ToString())].addPlayer(us);
-                                        us.RoomNumber = _nr;
+                                        lstRoom.ListRoom[roomNumber].addPlayer(us);
+                                        us.RoomNumber = roomNumber;
                                         updateListView(us);
-                                        updateUi(us.UserName + " đã vào phòng " + _nr.ToString());
-                                        if (lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer.Count() == 2)
+                                        updateUi(us.UserName + " đã vào phòng " + roomNumber.ToString());
+                                        if (lstRoom.ListRoom[roomNumber].ListPlayer.Count() == 2)
                                         {
-                                            lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0].LuotDi = 1;
-                                            sendData("#_TCP_LD1" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0].UserName.ToString(), lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0]._Socket);
-                                            updateUi("Room" + receive[8].ToString() + "_" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[0].UserName.ToString() + " có lượt đi " + (1).ToString());
-                                            lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1].LuotDi = 2;
-                                            sendData("#_TCP_LD2" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1].UserName.ToString(), lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1]._Socket);
-                                            updateUi("Room" + receive[8].ToString() + "_" + lstRoom.ListRoom[int.Parse(receive[8].ToString())].ListPlayer[1].UserName.ToString() + " có lượt đi " + (2).ToString());
+                                            lstRoom.ListRoom[roomNumber].ListPlayer[0].LuotDi = 1;
+                                            sendData("#_TCP_LD1" + lstRoom.ListRoom[roomNumber].ListPlayer[0].UserName.ToString(), lstRoom.ListRoom[roomNumber].ListPlayer[0]._Socket);
+                                            updateUi("Room" + roomNumber.ToString() + "_" + lstRoom.ListRoom[roomNumber].ListPlayer[0].UserName.ToString() + " có lượt đi " + (1).ToString());
+                                            lstRoom.ListRoom[roomNumber].ListPlayer[1].LuotDi = 2;
+                                            sendData("#_TCP_LD2" + lstRoom.ListRoom[roomNumber].ListPlayer[1].UserName.ToString(), lstRoom.ListRoom[roomNumber].ListPlayer[1]._Socket);
+                                            updateUi("Room" + receive[8].ToString() + "_" + lstRoom.ListRoom[roomNumber].ListPlayer[1].UserName.ToString() + " có lượt đi " + (2).ToString());
                                         }
 
                                         us.InRoom = true;
                                         foreach (User _us in lstUser.ListPlayer)
                                         {
-                                            sendData("#_TCP_UD" + receive[8].ToString() + lstRoom.ListRoom[int.Parse(receive[8].ToString())].playerCount(), _us._Socket);
+                                            sendData("#_TCP_UD" + receive[8].ToString() + lstRoom.ListRoom[roomNumber].playerCount(), _us._Socket);
                                         }
                                     }
                                     break;
@@ -300,7 +300,7 @@ namespace Server
                         if (receive.Substring(0, 9) == "#_Chat_00")
                         {
                             updateUi(playerName + ": " + receive.Substring(9));
-
+                            
                             for (int i = 0; i < lstUser.ListPlayer.Count; i++)
                             {
                                 if (!lstUser.ListPlayer[i].InRoom)
@@ -308,6 +308,7 @@ namespace Server
                                     sendData("#_Chat_00" + playerName + ": " + receive.Substring(9), lstUser.ListPlayer[i]._Socket);
                                 }
                             }
+                             
                         }
                         if (receive.Substring(0, 8) == "#_Chat_1")
                         {
@@ -575,7 +576,9 @@ namespace Server
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-
+            
+            this.Close();
+            
         }
 
         private void frmServer_Load(object sender, EventArgs e)

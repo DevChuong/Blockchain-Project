@@ -14,3 +14,12 @@ C:\Users\arcro\documents\visual studio 2010\Projects\Client\Client\obj\x86\Debug
 C:\Users\arcro\documents\visual studio 2010\Projects\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
 C:\Users\arcro\documents\visual studio 2010\Projects\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.Cache
 C:\Users\arcro\documents\visual studio 2010\Projects\Client\Client\obj\x86\Debug\Client.Form3.resources
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\obj\x86\Debug\Client.exe
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\obj\x86\Debug\Client.pdb
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\bin\Debug\Client.exe
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\bin\Debug\Client.pdb
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\obj\x86\Debug\Client.Form1.resources
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\obj\x86\Debug\Client.Form3.resources
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\obj\x86\Debug\Client.Properties.Resources.resources
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\obj\x86\Debug\Client.csproj.GenerateResource.Cache
+C:\Users\arcro\Documents\GitHub\Blockchain-Project\C#\Client\Client\obj\x86\Debug\Client.csprojResolveAssemblyReference.cache

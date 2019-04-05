@@ -32,7 +32,7 @@ namespace Client
         public Form3()
         {
             InitializeComponent();
-            //starClient();
+            starClient();
             updateUi = new updateUI(update);
             CheckForIllegalCrossThreadCalls = false;
         }
@@ -54,7 +54,7 @@ namespace Client
             {
                 client.EndConnect(ar);  // lấy socket của nơi gửi
                 //updateUi("Kết nối thành công tới Server: " + client.RemoteEndPoint.ToString());
-                string welcome = "Hello Server";
+                string welcome = " ";
                 buffSend = new byte[1024];
                 buffSend = Encoding.UTF8.GetBytes(welcome);
                 // đắng ký việc gửi dữ liệu

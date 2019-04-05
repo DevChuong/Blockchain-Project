@@ -75,7 +75,7 @@
             this.lstDisplay.ItemHeight = 14;
             this.lstDisplay.Location = new System.Drawing.Point(12, 22);
             this.lstDisplay.Name = "lstDisplay";
-            this.lstDisplay.Size = new System.Drawing.Size(330, 270);
+            this.lstDisplay.Size = new System.Drawing.Size(373, 270);
             this.lstDisplay.TabIndex = 4;
             // 
             // txtSend
@@ -103,7 +103,7 @@
             this.lsvListPlayer.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsvListPlayer.FullRowSelect = true;
             this.lsvListPlayer.GridLines = true;
-            this.lsvListPlayer.Location = new System.Drawing.Point(358, 22);
+            this.lsvListPlayer.Location = new System.Drawing.Point(403, 22);
             this.lsvListPlayer.Name = "lsvListPlayer";
             this.lsvListPlayer.Size = new System.Drawing.Size(355, 270);
             this.lsvListPlayer.TabIndex = 5;
@@ -148,7 +148,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(734, 406);
+            this.ClientSize = new System.Drawing.Size(770, 406);
             this.Controls.Add(this.lblNguoiNhan);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lsvListPlayer);
