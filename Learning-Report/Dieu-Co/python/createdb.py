@@ -43,19 +43,19 @@ def main():
 
     sql_create_trainee_records_table = """CREATE TABLE IF NOT EXISTS trainee_records (
                                     qr_code text PRIMARY KEY,
-                                    FOREIGN KEY (trainee_id) REFERENCES employees (id),
+                                    trainee_id integer REFERENCES employees (id),
                                     finished_task text NOT NULL,
                                     self_rating text,
-                                    FOREIGN KEY (sup_id) REFERENCES employees (id),
+                                    sup_id integer REFERENCES employees (id),
                                     sup_rating text,
                                     feedback text,
                                     signing_status text
                                 );"""
     sql_create_evaluation_form_table = """CREATE TABLE IF NOT EXISTS evaluation_form (
-                                    FOREIGN KEY (sup_id) REFERENCES employees (id),
+                                    sup_id integer REFERENCES employees (id),
                                     rating text,
                                     efeedback text,
-                                    FOREIGN KEY (eqr_code) REFERENCES trainee_records (qr_code)
+                                    eqr_code text REFERENCES trainee_records (qr_code)
                                 );"""
     # create a database connection
     conn = create_connection(database)
