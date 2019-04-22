@@ -43,9 +43,7 @@
 
         });
       });
-      function cache_clear() {
-       window.location.reload(true);
-      };
+
     </script>
 
     <script src="js/bootstrap.min.js"></script>
@@ -118,7 +116,7 @@
   if(typeof web3 !== 'undefined'){
     web3 = new Web3(web3.currentProvider);
   } else {
-    web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"));
+    web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
   }
 
   web3.eth.defaultAccount =  web3.eth.accounts[1];
@@ -185,6 +183,10 @@
 			},
 			{
 				"name": "_TraineeCertificate",
+				"type": "string"
+			},
+			{
+				"name": "_Signature",
 				"type": "string"
 			}
 		],
@@ -265,38 +267,7 @@
 			}
 		],
 		"name": "getListOfTraineesRecords",
-		"outputs": [
-			{
-				"components": [
-					{
-						"name": "_TraineeAddress",
-						"type": "address"
-					},
-					{
-						"name": "_TraineeID",
-						"type": "uint256"
-					},
-					{
-						"name": "_TraineeName",
-						"type": "string"
-					},
-					{
-						"name": "_TrHospitaName",
-						"type": "string"
-					},
-					{
-						"name": "_Category",
-						"type": "string"
-					},
-					{
-						"name": "_TraineeCertificate",
-						"type": "string"
-					}
-				],
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
+		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -361,6 +332,11 @@
 				"indexed": false,
 				"name": "_TraineeCertificate",
 				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_Signature",
+				"type": "string"
 			}
 		],
 		"name": "add_Records",
@@ -410,6 +386,50 @@
 	},
 	{
 		"constant": true,
+		"inputs": [],
+		"name": "getListOfTrainees",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_Category",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [
 			{
 				"name": "",
@@ -425,6 +445,73 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "Records",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_Category",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "sig",
+				"type": "bytes"
+			}
+		],
+		"name": "recoverSigner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -462,11 +549,42 @@
 				"type": "address"
 			}
 		],
-		"name": "See_Employee_Records",
+		"name": "See_Employee_Info",
 		"outputs": [
 			{
 				"name": "",
 				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Latest_Records",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
 			},
 			{
 				"name": "",
@@ -489,7 +607,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x023403ab74f409120836426281a260f198e7d6fa');
+]).at('0x8cefb97554c33ca025e412b2f02b774631b2511f');
 
 
 </script>
