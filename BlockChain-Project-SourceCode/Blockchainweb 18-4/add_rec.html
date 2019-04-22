@@ -121,6 +121,28 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#add_rec").click(function(){
+						try {
+							var HospitalAddress = $("#hos_add:text").val();
+		          var TraineeAddress = $("#emp_add:text").val();
+		          var TraineeID = $("#emp_ID:text").val();
+		          var TraineeName = $("#emp_name:text").val();
+		          var HospitalName = $("#hos_name:text").val();
+		          var Category = $("#category:text").val();
+		          var Certificate = $("#certificate:text").val();
+							contract.Add_Records(HospitalAddress,TraineeAddress,TraineeID,TraineeName,HospitalName,Category,Certificate,{from : account, gas: 3000000});
+							setInterval(function(){
+								cache_clear();
+							});
+							alert("clicked");
+						} catch{
+
+						}
+					});
+				});
+			</script>
+			<!-- <script type="text/javascript">
 	      $(document).ready(function(){
 	        $("#add_rec").click(function(){
 	          try{
@@ -133,7 +155,7 @@
 	          var Certificate = $("#certificate:text").val();
 	          contract.Add_Records(HospitalAddress, TraineeAddress, TraineeID, TraineeName, HospitalName, Category, Certificate, {from : account , gas : 3000000});
 	          setInterval(function() {
-	            cache_clear()
+	            cache_clear();
 	          });
 	          alert("Added");
 	        }catch{
@@ -155,7 +177,7 @@
 	      function cache_clear() {
 	       window.location.reload(true);
 	      };
-	    </script>
+	    </script> -->
 			<script>
 			  if(typeof web3 !== 'undefined'){
 			    web3 = new Web3(web3.currentProvider);
