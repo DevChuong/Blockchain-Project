@@ -72,7 +72,7 @@
 								<input type="text" name="emp_name" id="emp_name" value="" placeholder="Employee name" />
 							</div>
 							<div class="col-6 col-12-xsmall">
-								<input type="text" name="category" id="category" value="" placeholder="Category" />
+								<input type="text" name="category" id="id_record" value="" placeholder="ID Record" />
 							</div>
 							<div class="col-6 col-12-xsmall">
 								<input type="text" name="certificate" id="certificate" value="" placeholder="Certificate" />
@@ -125,6 +125,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
 			<script type="text/javascript">
 				$(document).ready(function(){
 					$("#add_rec").click(function(){
@@ -134,16 +135,31 @@
 		          var TraineeID = $("#emp_ID:text").val();
 		          var TraineeName = $("#emp_name:text").val();
 		          var HospitalName = $("#hos_name:text").val();
-		          var Category = $("#category:text").val();
+		          var ID_Record = $("#id_record:text").val();
 		          var Certificate = $("#certificate:text").val();
-							contract.Add_Records(HospitalAddress,TraineeAddress,TraineeID,TraineeName,HospitalName,Category,Certificate,{from : account, gas: 3000000});
-							setInterval(function(){
-								cache_clear();
-							});
-							alert("clicked");
-						} catch{
 
-						}
+							var Message_Hashed = web3.sha3(Certificate);
+							var Signature = web3.eth.sign(account, Message_Hashed);
+
+							var result = "";
+							const proxyurl = "https://cors-anywhere.herokuapp.com/";
+							const url = "http://1c71a10e.ngrok.io/user/" + ID_Record + "?record=" + TraineeID;
+						 // console.log(url);// site that doesn’t send Access-Control-*
+							fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+							.then(response => response.text())
+							.then(contents => {
+								result = contents;
+								if (result == 0){
+									alert("Couldn't find hashing of your record. Please check the information again !");
+								}else{
+									var Record_Hashing = result;
+									console.log(Record_Hashing);
+									$(".wrapper").hide();
+
+								}})
+							}
+					catch{
+					}
 					});
 				});
 			</script>
@@ -688,7 +704,7 @@
 					]).at('0x0dde98481d145c110c499532f6ea4c08e73ee3c1');
 
 			</script>
-		
+
 
 
 	</body>
