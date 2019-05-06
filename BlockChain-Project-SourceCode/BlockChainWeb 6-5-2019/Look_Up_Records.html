@@ -17,7 +17,7 @@
 		<!-- Header -->
 			<header id="header">
 				<a class="logo" href="index.html">Blockchain ProJect</a>
-				
+
 				<div style="background-color: #00ff00; color: black;">
 					<input type="text" id="Account_Address" disabled="" size="73">
 				</div>
@@ -218,490 +218,511 @@
 				var account = web3.eth.defaultAccount
 
 				var contract = web3.eth.contract([
-						{
-							"constant": false,
-							"inputs": [
-								{
-									"name": "_HospitalAddress",
-									"type": "address"
-								},
-								{
-									"name": "_TraineeAddress",
-									"type": "address"
-								},
-								{
-									"name": "_TraineeID",
-									"type": "uint256"
-								},
-								{
-									"name": "_TraineeName",
-									"type": "string"
-								},
-								{
-									"name": "_TrHospitalName",
-									"type": "string"
-								}
-							],
-							"name": "Add_Employees",
-							"outputs": [],
-							"payable": false,
-							"stateMutability": "nonpayable",
-							"type": "function"
-						},
-						{
-							"constant": false,
-							"inputs": [
-								{
-									"name": "_HospitalAddress",
-									"type": "address"
-								},
-								{
-									"name": "_TraineeAddress",
-									"type": "address"
-								},
-								{
-									"name": "_TraineeID",
-									"type": "uint256"
-								},
-								{
-									"name": "_TraineeName",
-									"type": "string"
-								},
-								{
-									"name": "_TrHospitaName",
-									"type": "string"
-								},
-								{
-									"name": "_Category",
-									"type": "string"
-								},
-								{
-									"name": "_TraineeCertificate",
-									"type": "string"
-								},
-								{
-									"name": "_Signature",
-									"type": "string"
-								}
-							],
-							"name": "Add_Records",
-							"outputs": [],
-							"payable": false,
-							"stateMutability": "nonpayable",
-							"type": "function"
-						},
-						{
-							"constant": false,
-							"inputs": [
-								{
-									"name": "_HospitalAddress",
-									"type": "address"
-								},
-								{
-									"name": "_HospitalID",
-									"type": "uint256"
-								},
-								{
-									"name": "_HospitalName",
-									"type": "string"
-								}
-							],
-							"name": "Authorise_Hospital",
-							"outputs": [],
-							"payable": false,
-							"stateMutability": "nonpayable",
-							"type": "function"
-						},
-						{
-							"constant": false,
-							"inputs": [
-								{
-									"name": "_HospitalAddress",
-									"type": "address"
-								},
-								{
-									"name": "_TraineeAddress",
-									"type": "address"
-								},
-								{
-									"name": "_TraineeID",
-									"type": "uint256"
-								}
-							],
-							"name": "deleteEmployee",
-							"outputs": [],
-							"payable": false,
-							"stateMutability": "nonpayable",
-							"type": "function"
-						},
-						{
-							"constant": false,
-							"inputs": [
-								{
-									"name": "_HospitalAddress",
-									"type": "address"
-								},
-								{
-									"name": "_HospitalID",
-									"type": "uint256"
-								}
-							],
-							"name": "deleteHospital",
-							"outputs": [],
-							"payable": false,
-							"stateMutability": "nonpayable",
-							"type": "function"
-						},
-						{
-							"constant": false,
-							"inputs": [
-								{
-									"name": "_TraineeAddress",
-									"type": "address"
-								}
-							],
-							"name": "getListOfTraineesRecords",
-							"outputs": [],
-							"payable": false,
-							"stateMutability": "nonpayable",
-							"type": "function"
-						},
-						{
-							"inputs": [],
-							"payable": false,
-							"stateMutability": "nonpayable",
-							"type": "constructor"
-						},
-						{
-							"anonymous": false,
-							"inputs": [
-								{
-									"indexed": false,
-									"name": "_HospitalAddress",
-									"type": "address"
-								},
-								{
-									"indexed": false,
-									"name": "_HospitalID",
-									"type": "uint256"
-								}
-							],
-							"name": "delete_Hospital",
-							"type": "event"
-						},
-						{
-							"anonymous": false,
-							"inputs": [
-								{
-									"indexed": false,
-									"name": "_HospitalAddress",
-									"type": "address"
-								},
-								{
-									"indexed": false,
-									"name": "_TraineeAddress",
-									"type": "address"
-								},
-								{
-									"indexed": false,
-									"name": "_TraineeID",
-									"type": "uint256"
-								},
-								{
-									"indexed": false,
-									"name": "_TraineeName",
-									"type": "string"
-								},
-								{
-									"indexed": false,
-									"name": "_TrHospitaName",
-									"type": "string"
-								},
-								{
-									"indexed": false,
-									"name": "_Category",
-									"type": "string"
-								},
-								{
-									"indexed": false,
-									"name": "_TraineeCertificate",
-									"type": "string"
-								},
-								{
-									"indexed": false,
-									"name": "_Signature",
-									"type": "string"
-								}
-							],
-							"name": "add_Records",
-							"type": "event"
-						},
-						{
-							"constant": true,
-							"inputs": [],
-							"name": "_NationalAuthority",
-							"outputs": [
-								{
-									"name": "",
-									"type": "address"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [],
-							"name": "getListOfHospitals",
-							"outputs": [
-								{
-									"components": [
-										{
-											"name": "_HospitalAddress",
-											"type": "address"
-										},
-										{
-											"name": "_HospitalID",
-											"type": "uint256"
-										},
-										{
-											"name": "_HospitalName",
-											"type": "string"
-										}
-									],
-									"name": "",
-									"type": "tuple[]"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [],
-							"name": "getListOfTrainees",
-							"outputs": [
-								{
-									"components": [
-										{
-											"name": "_TraineeAddress",
-											"type": "address"
-										},
-										{
-											"name": "_TraineeID",
-											"type": "uint256"
-										},
-										{
-											"name": "_TraineeName",
-											"type": "string"
-										},
-										{
-											"name": "_TrHospitaName",
-											"type": "string"
-										},
-										{
-											"name": "_Category",
-											"type": "string"
-										},
-										{
-											"name": "_TraineeCertificate",
-											"type": "string"
-										},
-										{
-											"name": "_Signature",
-											"type": "string"
-										}
-									],
-									"name": "",
-									"type": "tuple[]"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [
-								{
-									"name": "",
-									"type": "uint256"
-								}
-							],
-							"name": "OfficialEmployees",
-							"outputs": [
-								{
-									"name": "",
-									"type": "address"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [],
-							"name": "Records",
-							"outputs": [
-								{
-									"components": [
-										{
-											"name": "_TraineeAddress",
-											"type": "address"
-										},
-										{
-											"name": "_TraineeID",
-											"type": "uint256"
-										},
-										{
-											"name": "_TraineeName",
-											"type": "string"
-										},
-										{
-											"name": "_TrHospitaName",
-											"type": "string"
-										},
-										{
-											"name": "_Category",
-											"type": "string"
-										},
-										{
-											"name": "_TraineeCertificate",
-											"type": "string"
-										},
-										{
-											"name": "_Signature",
-											"type": "string"
-										}
-									],
-									"name": "",
-									"type": "tuple[]"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [
-								{
-									"name": "hash",
-									"type": "bytes32"
-								},
-								{
-									"name": "sig",
-									"type": "bytes"
-								}
-							],
-							"name": "recoverSigner",
-							"outputs": [
-								{
-									"name": "",
-									"type": "address"
-								}
-							],
-							"payable": false,
-							"stateMutability": "pure",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [
-								{
-									"name": "_HospitalAddress",
-									"type": "address"
-								}
-							],
-							"name": "See_Authorised_Hospital",
-							"outputs": [
-								{
-									"name": "",
-									"type": "address"
-								},
-								{
-									"name": "",
-									"type": "uint256"
-								},
-								{
-									"name": "",
-									"type": "string"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [
-								{
-									"name": "_TraineeAddress",
-									"type": "address"
-								}
-							],
-							"name": "See_Employee_Info",
-							"outputs": [
-								{
-									"name": "",
-									"type": "uint256"
-								},
-								{
-									"name": "",
-									"type": "string"
-								},
-								{
-									"name": "",
-									"type": "string"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						},
-						{
-							"constant": true,
-							"inputs": [
-								{
-									"name": "_TraineeAddress",
-									"type": "address"
-								}
-							],
-							"name": "See_Employee_Latest_Records",
-							"outputs": [
-								{
-									"name": "",
-									"type": "uint256"
-								},
-								{
-									"name": "",
-									"type": "string"
-								},
-								{
-									"name": "",
-									"type": "string"
-								},
-								{
-									"name": "",
-									"type": "string"
-								},
-								{
-									"name": "",
-									"type": "string"
-								},
-								{
-									"name": "",
-									"type": "string"
-								}
-							],
-							"payable": false,
-							"stateMutability": "view",
-							"type": "function"
-						}
-					]).at('0x0dde98481d145c110c499532f6ea4c08e73ee3c1');
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"name": "_TrHospitalName",
+				"type": "string"
+			}
+		],
+		"name": "Add_Employees",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"name": "_TrHospitaName",
+				"type": "string"
+			},
+			{
+				"name": "_ID_Record",
+				"type": "uint256"
+			},
+			{
+				"name": "_Record_Hashing",
+				"type": "string"
+			},
+			{
+				"name": "_TraineeCertificate",
+				"type": "string"
+			},
+			{
+				"name": "_Signature",
+				"type": "string"
+			}
+		],
+		"name": "Add_Records",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_HospitalID",
+				"type": "uint256"
+			},
+			{
+				"name": "_HospitalName",
+				"type": "string"
+			}
+		],
+		"name": "Authorise_Hospital",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteEmployee",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_HospitalID",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteHospital",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getListOfTraineesRecords",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_HospitalID",
+				"type": "uint256"
+			}
+		],
+		"name": "delete_Hospital",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_TrHospitaName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_ID_Record",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_Record_Hashing",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeCertificate",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_Signature",
+				"type": "string"
+			}
+		],
+		"name": "add_Records",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "_NationalAuthority",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfHospitals",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_HospitalAddress",
+						"type": "address"
+					},
+					{
+						"name": "_HospitalID",
+						"type": "uint256"
+					},
+					{
+						"name": "_HospitalName",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTrainees",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_ID_Record",
+						"type": "uint256"
+					},
+					{
+						"name": "_Record_Hashing",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "OfficialEmployees",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "Records",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_ID_Record",
+						"type": "uint256"
+					},
+					{
+						"name": "_Record_Hashing",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "sig",
+				"type": "bytes"
+			}
+		],
+		"name": "recoverSigner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Authorised_Hospital",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Info",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Latest_Records",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
 
 			</script>
 
