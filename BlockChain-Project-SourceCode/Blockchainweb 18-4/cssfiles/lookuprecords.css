@@ -1,0 +1,22 @@
+.full_records {
+	margin: 50px;
+	padding: 50px;
+}
+.latest_records {
+	margin: 50px;
+	padding: 50px;
+}
+.lookup_records_section {
+	margin: 50px;
+	padding: 50px;	
+}
+
+
+.full_records {
+	display: none;
+
+}
+
+.latest_records {
+	display: none;
+}
