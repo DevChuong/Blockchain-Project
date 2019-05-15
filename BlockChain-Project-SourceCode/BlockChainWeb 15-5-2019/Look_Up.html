@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Industrious by TEMPLATED</title>
+		<title>Looking Up Information</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -24,7 +24,7 @@
 			<header id="header">
 				<a class="logo" href="index.html">Blockchain ProJect</a>
 				<div style="background-color: #00ff00; color: black;">
-					<input type="text" id="Account_Address" disabled="" size="73">
+					<input type="text" id="Account_Address" disabled="" size="73" style="width: 670px;font-weight: 600;">
 				</div>
 
 				<nav>
@@ -49,8 +49,8 @@
 			<section id="banner">
 				<div class="inner">
 					<h1>Block chain in health care</h1>
-					<p>This website is used for authorizing/unauthorizing, adding records and looking up information from the system<br />
-					it also used for signing and verifying message.</p>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
 			</section>
@@ -201,49 +201,39 @@
 
 						try {
  						var HospitalAddress = $(".form-control-hospital-address").val();
-						var result = contract.See_Authorised_Hospital(HospitalAddress, {from : account, gas : 3000000});
-						var address = result[0];
-						var id = result[1];
-						var name = result[2];
-						$("#hospital_address").text(address);
-			            $("#hospital_id").text(id);
-   					 	$("#hospital_name").text(name);
-   					 	$(".hospital_info_result_table").show();
 
-			            if(HospitalAddress == '') {
-			            	alert("input your hospital address first !");
-	            				$(".hospital_info_result_table").hide();
-			            }
-			            else if(HospitalAddress == 0){
-			              alert("Error: check your information again !");
-							$(".hospital_info_result_table").hide();
-		            	}
-			            else if(address == 0){
-			              alert("Error: check your information again !");
-							$(".hospital_info_result_table").hide();
-						}
-			            else if(HospitalAddress == "0x0000000000000000000000000000000000000000"){
-			              alert("Error: check your information again !");
-							$(".hospital_info_result_table").hide();
+						var addressCheck = web3.isAddress(HospitalAddress);
+						if(addressCheck == true){
+								var result = contract.See_Authorised_Hospital(HospitalAddress, {from : account, gas : 3000000});
+								var address = result[0];
+								var id = result[1];
+								var name = result[2];
+								$("#hospital_address").text(address);
+								$("#hospital_id").text(id);
+								$("#hospital_name").text(name);
+								$(".hospital_info_result_table").show();
+								if(id == 0){
+									alert("Error: Couldnt find the Hospital Info in the BlockChain !");
+								}
+						}else{
+							alert("Error: Invalid Address !");
 						}
 
+				    }
+						catch{
+				    alert("Error : Please check the information again !");
+				    }
 
-
-				          }catch{
-				            alert("Error : Please check the information again !");
-
-				          }
-
-				         $("select").change(function() {
- 							if($(this).val() == "employee_choice") {
-								$(".hospital_info_result_table").hide();
-							}
-				         });
+				    $("select").change(function() {
+ 						if($(this).val() == "employee_choice") {
+						$(".hospital_info_result_table").hide();
+						}
+				    });
 						$("select").change(function() {
-							if($(this).val() == "none") {
-								$(".hospital_info_result_table").hide();
-								$(".employee_info_result_table").hide();
-							}
+						if($(this).val() == "none") {
+						$(".hospital_info_result_table").hide();
+						$(".employee_info_result_table").hide();
+						}
 						});
 
 					});
@@ -257,33 +247,33 @@
 			<script>
 				$(function() {
 					$("button:odd").click(function() {
-						try {
+						try{
+					        var EmployeeAddress = $(".form-control-employee-address").val();
 
-			            var EmployeeAddress = $(".form-control-employee-address").val();
-			            var result = contract.See_Employee_Info(EmployeeAddress, {from : account , gas : 3000000});
-			            var EmployeeID = result[0];
-			            var EmployeeName = result[1];
-			            var EmployeeHospitalName = result[2];
+									var addressCheck = web3.isAddress(EmployeeAddress);
+									if(addressCheck == true){
+										var result = contract.See_Employee_Info(EmployeeAddress, {from : account , gas : 3000000});
+				            var EmployeeID = result[0];
+				            var EmployeeName = result[1];
+				            var EmployeeHospitalName = result[2];
 
 
-			            $("#employee_id").text(EmployeeID);
-			            $("#employee_name").text(EmployeeName);
-			            $("#employee_hospital_name").text(EmployeeHospitalName);
+				            $("#employee_id").text(EmployeeID);
+				            $("#employee_name").text(EmployeeName);
+				            $("#employee_hospital_name").text(EmployeeHospitalName);
 
-			            $(".employee_info_result_table").show();
+				            $(".employee_info_result_table").show();
 
-			            if(EmployeeID == 0) {
-			            	alert("error: please check the information again !");
-			            	$(".employee_info_result_table").hide();
-			            }
-			            else if(EmployeeAddress == ''){
-			              alert("Error: Input your employee address first !");
-							$(".employee_info_result_table").hide();
-		            	}
+										if(EmployeeID == 0){
+											alert("Error: Couldnt find the Employee Info in the BlockChain !");
+										}
+									}
+									else{
+										alert("Error: Invalid Address !");
+									}
 
-						}catch {
-							alert("Error : Please check the information again !");
-
+						}catch{
+								alert("Error : Please check the information again !");
 						}
 
 						$("select").change(function() {
@@ -302,7 +292,6 @@
 
 					});
 				});
-
 
 
 			</script>
@@ -326,36 +315,6 @@
 				var account = web3.eth.defaultAccount
 
 				var contract = web3.eth.contract([
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_HospitalAddress",
-				"type": "address"
-			},
-			{
-				"name": "_TraineeAddress",
-				"type": "address"
-			},
-			{
-				"name": "_TraineeID",
-				"type": "uint256"
-			},
-			{
-				"name": "_TraineeName",
-				"type": "string"
-			},
-			{
-				"name": "_TrHospitalName",
-				"type": "string"
-			}
-		],
-		"name": "Add_Employees",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
 	{
 		"constant": false,
 		"inputs": [
@@ -406,22 +365,240 @@
 		"constant": false,
 		"inputs": [
 			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getListOfTraineesRecords",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
 				"name": "_HospitalAddress",
 				"type": "address"
 			},
 			{
-				"name": "_HospitalID",
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
 				"type": "uint256"
 			},
 			{
-				"name": "_HospitalName",
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"name": "_TrHospitalName",
 				"type": "string"
 			}
 		],
-		"name": "Authorise_Hospital",
+		"name": "Add_Employees",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getFullRecords",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "OfficialEmployees",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTrainees",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_ID_Record",
+						"type": "uint256"
+					},
+					{
+						"name": "_Record_Hashing",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfHospitals",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_HospitalAddress",
+						"type": "address"
+					},
+					{
+						"name": "_HospitalID",
+						"type": "uint256"
+					},
+					{
+						"name": "_HospitalName",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Info",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Latest_Records",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -465,17 +642,151 @@
 		"type": "function"
 	},
 	{
-		"constant": false,
+		"constant": true,
 		"inputs": [
 			{
-				"name": "_TraineeAddress",
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "sig",
+				"type": "bytes"
+			}
+		],
+		"name": "recoverSigner",
+		"outputs": [
+			{
+				"name": "",
 				"type": "address"
 			}
 		],
-		"name": "getListOfTraineesRecords",
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "Records",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_ID_Record",
+						"type": "uint256"
+					},
+					{
+						"name": "_Record_Hashing",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_HospitalID",
+				"type": "uint256"
+			},
+			{
+				"name": "_HospitalName",
+				"type": "string"
+			}
+		],
+		"name": "Authorise_Hospital",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Authorised_Hospital",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "_NationalAuthority",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTraineesRecordsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -552,285 +863,8 @@
 		],
 		"name": "add_Records",
 		"type": "event"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "_NationalAuthority",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getListOfHospitals",
-		"outputs": [
-			{
-				"components": [
-					{
-						"name": "_HospitalAddress",
-						"type": "address"
-					},
-					{
-						"name": "_HospitalID",
-						"type": "uint256"
-					},
-					{
-						"name": "_HospitalName",
-						"type": "string"
-					}
-				],
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getListOfTrainees",
-		"outputs": [
-			{
-				"components": [
-					{
-						"name": "_TraineeAddress",
-						"type": "address"
-					},
-					{
-						"name": "_TraineeID",
-						"type": "uint256"
-					},
-					{
-						"name": "_TraineeName",
-						"type": "string"
-					},
-					{
-						"name": "_TrHospitaName",
-						"type": "string"
-					},
-					{
-						"name": "_ID_Record",
-						"type": "uint256"
-					},
-					{
-						"name": "_Record_Hashing",
-						"type": "string"
-					},
-					{
-						"name": "_TraineeCertificate",
-						"type": "string"
-					},
-					{
-						"name": "_Signature",
-						"type": "string"
-					}
-				],
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "OfficialEmployees",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "Records",
-		"outputs": [
-			{
-				"components": [
-					{
-						"name": "_TraineeAddress",
-						"type": "address"
-					},
-					{
-						"name": "_TraineeID",
-						"type": "uint256"
-					},
-					{
-						"name": "_TraineeName",
-						"type": "string"
-					},
-					{
-						"name": "_TrHospitaName",
-						"type": "string"
-					},
-					{
-						"name": "_ID_Record",
-						"type": "uint256"
-					},
-					{
-						"name": "_Record_Hashing",
-						"type": "string"
-					},
-					{
-						"name": "_TraineeCertificate",
-						"type": "string"
-					},
-					{
-						"name": "_Signature",
-						"type": "string"
-					}
-				],
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "hash",
-				"type": "bytes32"
-			},
-			{
-				"name": "sig",
-				"type": "bytes"
-			}
-		],
-		"name": "recoverSigner",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "pure",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_HospitalAddress",
-				"type": "address"
-			}
-		],
-		"name": "See_Authorised_Hospital",
-		"outputs": [
-			{
-				"name": "",
-				"type": "address"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_TraineeAddress",
-				"type": "address"
-			}
-		],
-		"name": "See_Employee_Info",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_TraineeAddress",
-				"type": "address"
-			}
-		],
-		"name": "See_Employee_Latest_Records",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			},
-			{
-				"name": "",
-				"type": "string"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
 	}
-]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
 			</script>
 

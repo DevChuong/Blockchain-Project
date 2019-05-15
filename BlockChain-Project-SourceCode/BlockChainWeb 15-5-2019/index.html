@@ -1,20 +1,14 @@
 <!DOCTYPE HTML>
-<!--
-	Industrious by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html>
 	<head>
-		<title>Industrious by TEMPLATED</title>
+		<title>HomePage</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="./cssfiles/signverifymessage.css">
 		<script src="./node_modules/web3/dist/web3.min.js"></script>
+
 
 	</head>
 	<body class="is-preload">
@@ -22,10 +16,6 @@
 		<!-- Header -->
 			<header id="header">
 				<a class="logo" href="index.html">Blockchain ProJect</a>
-
-				<div style="background-color: #00ff00; color: black; font-weight: bold;">
-					<input type="text" id="Account_Address" disabled="" size="73">
-				</div>
 
 				<nav>
 					<a href="#menu">Menu</a>
@@ -49,109 +39,112 @@
 			<section id="banner">
 				<div class="inner">
 					<h1>Block chain in health care</h1>
-					<p>This website is used for authorizing/unauthorizing, adding records and looking up information from the system<br />
-					it also used for signing and verifying message.</p>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
 			</section>
 
 		<!-- Highlights -->
-
-		<section>
-
-			<div class="signverify_section">
-				<select name="category" id="category">
-					<option value="none" style="color: Black; font-weight:bold;">- Select your choice please. -</option>
-					<option value="sign_choice" style="color: Black; font-weight:bold;">Sign Section</option>
-					<option value="verify_choice" style="color: Black; font-weight:bold;">Verify Section</option>
-				</select>
-			</div>
-
-	  	    <div class="sign_section">
-				<div class="description">
-					<p style="padding-bottom: 20px;font-size: 22px; font-family: Lucida,Monaco, monospace; color: Black; font-weight:bold;">Input the message you want to sign below. Then copy the signature and paste it into "Signature" field when adding Employee Records !</p>
+			<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2 style = "color: Black; font-weight:bold;">features</h2>
+						<p style="color: Black; font-weight:bold;">Make sure you are using the right authorized account!.</p>
+					</header>
+					<div class="highlights">
+						<section>
+							<div class="content">
+								<header>
+									<a href="Authorise.html" class="icon fa-check-square-o"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Authorize</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Authorization can be used by national authority to add hospital. And add new employee by hospital.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Unauthorize.html" class="icon fa-times"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Unauthorize</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Can be used for unauthorizing both hospitals and trainees. Make sure you are the national authority.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Add_Records.html" class="icon fa-floppy-o"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Add records</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Add working records of trainees, make sure you are in-charge of that trainees.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Look_Up.html" class="icon fa-search"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Look up info</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">You can look up information of the trainees and hospitals here.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Sign_Verify.html" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Sign/Verify message</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Make sure the message comes from the right person.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Look_Up_Records.html" class="icon fa-qrcode"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Employee records</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">You can either look up fully or partially trainees' records.</p>
+							</div>
+						</section>
+					</div>
 				</div>
-
-				<div class="message">
-					<h3 style="color: Black; font-weight:bold;">your message:</h3>
-					<input style="color: Black; font-weight:bold;" class="form-control" type="text" placeholder="Type your message here">
-				</div>
-
-
-	          <button style="color: Black; font-weight:bold;" id="button1" type="button" class="btn btn-primary">Sign</button>
-
-		        <div class="signature_result">
-		        	<br>
-		        	<br>
-		        	<br>
-		        	<br>
-		          <h3 id="signature" style="color: Black; font-weight:bold;">Your Signature:</h3>
-		          <p id="signature" style="color: Black; font-weight:bold;"></p>
-		        </div>
-	    	</div>
-
-	    	<div class="verify_section">
-
-				<div class="hospital_info">
-					<h3 style="color: Black; font-weight:bold;">Employee Certificate</h3>
-					<input style="color: Black; font-weight:bold;" type="text" id = "1st" class="form-control" style = " font-size: larger;" placeholder="Please input the employee certificate..">
-				</div>
-
-				<div class="hospital_info">
-					<h3 style="color: Black; font-weight:bold;">Signature</h3>
-					<input style="color: Black; font-weight:bold;" type="text" id ="2nd" class="form-control" style = " font-size: larger;" placeholder="Please input the hospital address..">
-				</div>
-
-				<div class="authorise_button">
-					<button id="button2" type="button" class="btn btn-success" style="margin-top: 65px; margin-right: 270px; width: 235px; height: 65px;font-size: 24px;  float: right;
-					font-family: Lucida,Monaco, monospace;">Verify</button>
-				</div>
-
-				<div class="verify-signer" style="margin-top:180px; margin-left:200px;font-family: Lucida,Monaco, monospace;">
-					<h3 id="signer-address">Signer Address</h3>
-					<p id="signer-address-return" style="font-family: Lucida,Monaco, monospace;font-size:20px; "></p>
-				</div>
-	    	</div>
-
-		</section>
-
-
-
+			</section>
 
 		<!-- Footer -->
-		<footer id="footer">
-			<div class="inner">
-				<div class="content">
-					<section>
-						<h3>About the project</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
-					</section>
-					<section>
-						<h4>Functions</h4>
-						<ul class="alt">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="auth_all.html">Authorize</a></li>
-							<li><a href="unauth.html">Unauthorize</a></li>
-							<li><a href="add_rec.html">Add records</a></li>
-							<li><a href="lookuppage.html">Look up info</a></li>
-							<li><a href="lookuprecords.html">Employee records</a></li>
-						</ul>
-					</section>
-					<section>
-						<h4>Team social media</h4>
-						<ul class="plain">
-							<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-							<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-							<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-							<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
-						</ul>
-					</section>
+			<footer id="footer">
+				<div class="inner">
+					<div class="content">
+						<section>
+							<h3 >About the project</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+						</section>
+						<section>
+							<h4>Functions</h4>
+							<ul class="alt">
+								<li><a href="Authorise.html">Authorize.</a></li>
+								<li><a href="Unauthorise.html">Unauthorize.</a></li>
+								<li><a href="Add_Records.html">Add records.</a></li>
+								<li><a href="Look_Up.html">Look up trainee info.</a></li>
+								<li><a href="Sign_Verify.html">Sign/Verify message.</a></li>
+								<li><a href="Look_Up_Records.html">Employee records.</a></li>
+							</ul>
+						</section>
+						<section>
+							<h4>Team social media</h4>
+							<ul class="plain">
+								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+							</ul>
+						</section>
+					</div>
+					<div class="copyright">
+						&copy; This is the blockchain project website.
+					</div>
 				</div>
-				<div class="copyright">
-					&copy; This is the blockchain project website.
-				</div>
-			</div>
-		</footer>
+			</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -162,67 +155,7 @@
 
 
 
-			<!-- show hide -->
-			<script>
-				$(function() {
-					$("select").change(function() {
-						if($(this).val() == "sign_choice") {
-							$(".sign_section").show();
-							$(".verify_section").hide();
-						}
-						else if ($(this).val() == "verify_choice") {
-							$(".sign_section").hide();
-							$(".verify_section").show();
-						}
-						else {
-							$(".sign_section").hide();
-							$(".verify_section").hide();
-						}
-					});
-				});
-			</script>
-
-
-			<!-- sign message -->
-			<script>
- 				$(function() {
-					$("#button1").click(function() {
-						var message = $(".form-control").val();
-						var messageHashed = web3.sha3(message);
-						var signature = web3.eth.sign(account, messageHashed);
-						if(message == "") {
-							alert(" please input first");
-						} else {
-							$(".signature_result").show();
-							$("p#signature").text(signature);
-						}
-					});
-				});
-
-			</script>
-
-			<!-- verify message -->
-			<script>
-				$(function() {
-					$("#signer-address").hide();
-					$("#button2").click(function() {
-						var EmployeeCertificate = $("#1st:text").val();
-						var Signature = $("#2nd:text").val();
-						var messageHashed = web3.sha3(EmployeeCertificate);
-						var SignerAddress = contract.recoverSigner(messageHashed, Signature, {from : account, gas : 3000000});
-				        $("#signer-address").show();
-	        			$("p#signer-address-return").text(SignerAddress);
-					});
-				});
-			</script>
-
-			<script>
-				$(function(){
-					$("#Account_Address").val( "Index: " + index +" Account address: " + account);
-				});
-			</script>
-
-
+		<!-- web3 -->
 			<script>
 				if(typeof web3 !== 'undefined'){
 					web3 = new Web3(web3.currentProvider);
@@ -230,7 +163,7 @@
 					web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"));
 				}
 
-				var index = 1;
+				var index = 2;
 				web3.eth.defaultAccount =  web3.eth.accounts[index];
 
 				var account = web3.eth.defaultAccount
@@ -740,12 +673,9 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
 			</script>
-
-
-
 
 	</body>
 </html>

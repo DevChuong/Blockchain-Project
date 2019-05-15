@@ -1,22 +1,30 @@
 <!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
 	<head>
-		<title>Add records blockchain project</title>
+		<title>Signing/Verifying Certificate</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="./cssfiles/signverifymessage.css">
 		<script src="./node_modules/web3/dist/web3.min.js"></script>
-		<link rel="stylesheet" href="./cssfiles/addrecord.css">
+
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html">Block chain project</a>
-				<div style="background-color: #00ff00; color: black;">
-					<input type="text" id="Account_Address" disabled="" size="73">
+				<a class="logo" href="index.html">Blockchain ProJect</a>
+
+				<div style="background-color: #00ff00; color: black; font-weight: bold;">
+					<input type="text" id="Account_Address" disabled="" size="73" style="width: 670px;font-weight: 600;">
 				</div>
 
 				<nav>
@@ -41,143 +49,109 @@
 			<section id="banner">
 				<div class="inner">
 					<h1>Block chain in health care</h1>
-					<p>This website is used for authorizing/unauthorizing, adding records and looking up information from the system<br />
-					it also used for signing and verifying message.</p>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
 			</section>
 
-		<!-- phần front end  -->
-			<section class="wrapper">
-				<div class="inner">
-					<header class="special">
-						<h2>Add records</h2>
-						<p>Make sure you are using the right authorized account!.</p>
-					</header>
-					<h3>Employee information</h3>
+		<!-- Highlights -->
 
+		<section>
 
-			<!-- Add record form -->
-					<form method="post" action="#">
-						<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall">
-								<input disabled="" readonly="" type="text" name="hos_add" id="hos_add" value="" placeholder="Hospital address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_add" id="emp_add" value="" placeholder="Employee Address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_ID" id="emp_ID" value="" placeholder="Employee ID" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_name" id="emp_name" value="" placeholder="Employee name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="hos_name" id="trainee_hos_name" value="" placeholder=" Trainee Hospital Name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="id_record" id="id_record" value="" placeholder="ID  record" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="record_hashing" id="record_hashing" value="" placeholder="Record Hashing" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="certificate" id="certificate" value="" placeholder="Certificate" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="signature" id="signature" value="" placeholder="Signature" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<a href="#" id="add_rec" class="button primary">Submit</a>
-							</div>
-
-						</div>
-					</form>
-
-			<!-- Confirm table -->
-				<div class="confirm_table">
-					<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall">
-								<input disabled="" readonly="" type="text" name="hos_add" id="hos_add" value="" placeholder="Hospital address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_add" id="emp_add" value="" placeholder="Employee Address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="hos_name" id="trainee_hos_name" value="" placeholder=" Trainee Hospital Name" />
-							</div>
-
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_ID" id="emp_ID" value="" placeholder="Employee ID" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_name" id="emp_name" value="" placeholder="Employee name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="id_record" id="id_record" value="" placeholder="ID  record" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="record_hashing" id="record_hashing" value="" placeholder="Record Hashing" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="certificate" id="certificate" value="" placeholder="Certificate" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="signature" id="signature" value="" placeholder="Signature" />
-							</div>
-
-					</div>
-
-				</div>
-
-			<!-- phần frontend gọi api -->
-			<br>
-			<br>
-			<br>
-			<div class="api_section">
-				<button id="api">Gọi api</button>
-				<div id="outputAPI"></div>
+			<div class="signverify_section">
+				<select name="category" id="category">
+					<option value="none" style="color: Black; font-weight:bold;">- Select your choice please. -</option>
+					<option value="sign_choice" style="color: Black; font-weight:bold;">Sign Section</option>
+					<option value="verify_choice" style="color: Black; font-weight:bold;">Verify Section</option>
+				</select>
 			</div>
 
+	  	    <div class="sign_section">
+				<div class="description">
+					<p style="padding-left: 500px; padding-bottom: 20px;font-size: 22px; font-family: Lucida,Monaco, monospace; color: Black; font-weight:bold;">Input the Certificate you want to sign below.</p>
+				</div>
+
+				<div class="message">
+					<h3 style="color: Black; font-weight:bold;">The Certificate:</h3>
+					<input style="color: Black; font-weight:bold;" class="form-control" type="text" placeholder="Type Certificate Here">
+				</div>
+
+
+	          <button style="color: Black; font-weight:bold;" id="button1" type="button" class="btn btn-primary">Sign</button>
+
+		        <div class="signature_result">
+		        	<br>
+		        	<br>
+		        	<br>
+		        	<br>
+		          <h3 id="signature" style="color: Black; font-weight:bold;">The Signature:</h3>
+		          <p id="signature" style="color: Black; font-weight:bold; font-size:23px;"></p>
+		        </div>
+	    	</div>
+
+	    	<div class="verify_section">
+
+				<div class="hospital_info">
+					<h3 style="color: Black; font-weight:bold;">Employee Certificate</h3>
+					<input style="color: Black; font-weight:bold;" type="text" id = "1st" class="form-control" style = " font-size: larger;" placeholder="Please input the employee certificate..">
+				</div>
+
+				<div class="hospital_info">
+					<h3 style="color: Black; font-weight:bold;">Signature</h3>
+					<input style="color: Black; font-weight:bold;" type="text" id ="2nd" class="form-control" style = " font-size: larger;" placeholder="Please input the hospital address..">
+				</div>
+
+				<div class="authorise_button">
+					<button id="button2" type="button" class="btn btn-success" style="margin-top: 65px; margin-right: 270px; width: 235px; height: 65px;font-size: 24px;  float: right;
+					font-family: Lucida,Monaco, monospace;">Verify</button>
+				</div>
+
+				<div class="verify-signer" style="margin-top:180px; margin-left:200px;font-family: Lucida,Monaco, monospace;">
+					<h3 id="signer-address">Signer Address</h3>
+					<p id="signer-address-return" style="font-family: Lucida,Monaco, monospace;font-size:20px; "></p>
+				</div>
+	    	</div>
+
+		</section>
 
 
 
-			</section>
 
 		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<div class="content">
-						<section>
-							<h3>About the project</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
-						</section>
-						<section>
-							<h4>Functions</h4>
-							<ul class="alt">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="auth_all.html">Authorize</a></li>
-								<li><a href="unauth.html">Unauthorize</a></li>
-								<li><a href="lookuppage.html">Look up info</a></li>
-								<li><a href="signverifymessage.html">Sign/Verify</a></li>
-								<li><a href="lookuprecords.html">Employee records</a></li>
-							</ul>
-						</section>
-						<section>
-							<h4>Team social media</h4>
-							<ul class="plain">
-								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
-							</ul>
-						</section>
-					</div>
-					<div class="copyright">
-						&copy; This is the blockchain project website.
-					</div>
+		<footer id="footer">
+			<div class="inner">
+				<div class="content">
+					<section>
+						<h3>About the project</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+					</section>
+					<section>
+						<h4>Functions</h4>
+						<ul class="alt">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="auth_all.html">Authorize</a></li>
+							<li><a href="unauth.html">Unauthorize</a></li>
+							<li><a href="add_rec.html">Add records</a></li>
+							<li><a href="lookuppage.html">Look up info</a></li>
+							<li><a href="lookuprecords.html">Employee records</a></li>
+						</ul>
+					</section>
+					<section>
+						<h4>Team social media</h4>
+						<ul class="plain">
+							<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+							<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+							<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+							<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+						</ul>
+					</section>
 				</div>
-			</footer>
+				<div class="copyright">
+					&copy; This is the blockchain project website.
+				</div>
+			</div>
+		</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -186,82 +160,71 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-		<!-- Phần Add record  -->
+
+
+			<!-- show hide -->
 			<script>
-				$(document).ready(function(){
-					$("#add_rec").click(function(){
-						try {
-							var HospitalAddress = $("#hos_add").val();
-							var TraineeAddress = $("#emp_add").val();
-							var TraineeID = $("#emp_ID").val();
-							var TraineeName = $("#emp_name").val();
-							var TraineeHospitalName = $("#trainee_hos_name").val();
-							var IDRecord = $("#id_record").val();
-							var RecordHashing = $("#record_hashing").val();
-							var Certificate = $("#certificate").val();
-							var Signature = $("#signature").val();
-
-							contract.Add_Records(HospitalAddress,TraineeAddress,TraineeID,TraineeName,TraineeHospitalName,IDRecord,RecordHashing,Certificate,Signature,{from : account, gas: 3000000});
-							alert("The record has been added !");
-						} catch{
-							if(account != HospitalAddress) {
-								alert("Error: the account does not match !");
-							}else {
-								alert("Please check your information again !");
-							}
+				$(function() {
+					$("select").change(function() {
+						if($(this).val() == "sign_choice") {
+							$(".sign_section").show();
+							$(".verify_section").hide();
+						}
+						else if ($(this).val() == "verify_choice") {
+							$(".sign_section").hide();
+							$(".verify_section").show();
+						}
+						else {
+							$(".sign_section").hide();
+							$(".verify_section").hide();
+						}
+					});
+				});
+			</script>
 
 
+			<!-- sign message -->
+			<script>
+ 				$(function() {
+					$("#button1").click(function() {
+						var message = $(".form-control").val();
+						var messageHashed = web3.sha3(message);
+						var signature = web3.eth.sign(account, messageHashed);
+						if(message == "") {
+							alert("Error: Certificate field cannot be empty !");
+						} else {
+							$(".signature_result").show();
+							$("p#signature").text(signature);
 						}
 					});
 				});
 
-				function cache_clear() {
-					window.location.reload(true);
-				}
+			</script>
 
 
+
+			<!-- verify message -->
+			<script>
+				$(function() {
+					$("#signer-address").hide();
+					$("#button2").click(function() {
+						var EmployeeCertificate = $("#1st:text").val();
+						var Signature = $("#2nd:text").val();
+						var messageHashed = web3.sha3(EmployeeCertificate);
+						var SignerAddress = contract.recoverSigner(messageHashed, Signature, {from : account, gas : 3000000});
+				        $("#signer-address").show();
+	        			$("p#signer-address-return").text(SignerAddress);
+					});
+				});
 			</script>
 
 			<script>
 				$(function(){
 					$("#Account_Address").val( "Index: " + index +" Account address: " + account);
-					$("#hos_add").val(account);
 				});
 			</script>
 
-		<!-- PHẦN GỌI API  -->
 
-		<script>
-			document.getElementById("api").addEventListener("click",getValue)
-			function getValue() {
-			    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-	    	    const url = "http://fad141e0.ngrok.io/resources/books/all";
-				fetch(proxyurl + url)
-				.then(function(response){
-					return response.json();
-				})
-				.then(function(data) {
-					let result = ` <h2> User Info From books... </h2>`;
-					data.forEach((user) => {
-		            const { id, name } = user
-		            result +=
-		            `<div>
-		                <h5> User ID: ${id} </h5>
-		                <ul class="w3-ul">
-		                    <li> User Name : ${name}</li>
-		                </ul>
-		            </div>`;
-
-					})
-					document.getElementById("outputAPI").innerHTML = result;
-
-				});
-			}
-		</script>
-
-
-
-		<!-- web3 -->
 			<script>
 				if(typeof web3 !== 'undefined'){
 					web3 = new Web3(web3.currentProvider);
@@ -269,7 +232,7 @@
 					web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"));
 				}
 
-				var index = 2;
+				var index = 1;
 				web3.eth.defaultAccount =  web3.eth.accounts[index];
 
 				var account = web3.eth.defaultAccount
@@ -518,6 +481,37 @@
 	},
 	{
 		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getFullRecords",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [],
 		"name": "getListOfHospitals",
 		"outputs": [
@@ -586,6 +580,20 @@
 				],
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTraineesRecordsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -779,7 +787,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
 			</script>
 

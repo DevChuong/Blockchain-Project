@@ -2,13 +2,12 @@
 
 <html>
 	<head>
-		<title>Industrious by TEMPLATED</title>
+		<title>Looking Up Records</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-
 		<link rel="stylesheet" type="text/css" href="cssfiles/lookuprecords.css">
 		<script src="./node_modules/web3/dist/web3.min.js"></script>
 	</head>
@@ -19,7 +18,7 @@
 				<a class="logo" href="index.html">Blockchain ProJect</a>
 
 				<div style="background-color: #00ff00; color: black;">
-					<input type="text" id="Account_Address" disabled="" size="73">
+					<input type="text" id="Account_Address" disabled="" size="73" style="width: 670px;font-weight: 600;">
 				</div>
 
 				<nav>
@@ -28,24 +27,24 @@
 			</header>
 
 			<!-- Nav -->
-				<nav id="menu">
-					<ul class="links">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="Authorise.html">Authorize</a></li>
-						<li><a href="Unauthorize.html">Unauthorize</a></li>
-						<li><a href="Add_Records.html">Add records</a></li>
-						<li><a href="Look_Up.html">Look up info</a></li>
-						<li><a href="Sign_Verify.html">Sign/Verify</a></li>
-						<li><a href="Look_Up_Records.html">Employee records</a></li>
-					</ul>
-				</nav>
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="Authorise.html">Authorize</a></li>
+					<li><a href="Unauthorize.html">Unauthorize</a></li>
+					<li><a href="Add_Records.html">Add records</a></li>
+					<li><a href="Look_Up.html">Look up info</a></li>
+					<li><a href="Sign_Verify.html">Sign/Verify</a></li>
+					<li><a href="Look_Up_Records.html">Employee records</a></li>
+				</ul>
+			</nav>
 
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
 					<h1 >Block chain in health care</h1>
-					<p>This website is used for authorizing/unauthorizing, adding records and looking up information from the system<br />
-					it also used for signing and verifying message.</p>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
 			</section>
@@ -68,67 +67,266 @@
 
 				<div class="hospital_info">
 					<h3 style="color: Black; font-weight:bold;">Employee Address</h3>
-					<input style="color: Black; font-weight:bold;" type="text" class="form-control"  style = "font-size: larger;" placeholder="Please input the employee address..">
+					<input id="EmpAddress" style="color: Black; font-weight:bold;" type="text" class="form-control"  style = "font-size: larger;" placeholder="Please input the employee address..">
 				</div>
 				<div class="authorise_button">
 					<br>
 					<br>
-					<button type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; margin-bottom:40px;" >Search</button>
+					<button type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; margin-bottom:40px;" onclick=getFullRecord()>Search</button>
 				</div>
-				<br>
-				<br>
-<!-- 				<div class="hospital_info_result">
-					<table>
-						<tr>
-							<th style="padding-right:250px;" style="color: Black; font-weight:bold;">Employee ID <br> </th>
-							<th style="padding-left: 5px; padding-right:70px;" style="color: Black; font-weight:bold;"> Employee Name <br> </th>
-							<th style="padding-right:70px;" style="color: Black; font-weight:bold;">Employee Hospital Name </th>
-						</tr>
-						<tr>
-							<td id="employee_id" style="color: Black; font-weight:bold;"></td>
-							<td id="employee_name" style="padding-left: 15px; padding-right:70px ;color: Black; font-weight:bold;"></td>
-							<td id="employee_hospital_name" style ="padding-left:45px;color: Black; font-weight:bold;"></td>
-						</tr>
-					</table>
 
 
-       			 </div > -->
+
 			</div>
 
 			<div class="latest_records">
 				<div class="hospital_info">
 					<h3 style="color: Black; font-weight:bold;">Employee Address</h3>
-					<input type="text" class="form-control"  style = "font-size: larger;color: Black; font-weight:bold;" placeholder="Please input the employee address..">
+					<input id= "traineeAddress" type="text" class="form-control"  style = "color: Black; font-weight:bold;" placeholder="Please input the employee address..">
 				</div>
 
 
 				<br>
-				<button type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; padding-bottom:15px;">Search</button>
-				<br>
-				<br>
-				<br>
+				<button type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; padding-bottom:15px;" onclick=getLatestRecord()>Search</button>
 
-
-<!-- 				<div class="hospital_info_result">
-					<table>
-						<tr>
-							<th style="padding-right:250px; color: Black; font-weight:bold;">Employee ID <br> </th>
-							<th style="padding-left: 5px; padding-right:70px; color: Black; font-weight:bold;"> Employee Name <br> </th>
-							<th style="padding-right:70px; color: Black; font-weight:bold;">Employee Hospital Name </th>
-						</tr>
-						<tr>
-							<td id="employee_id" style="color: Black; font-weight:bold;"></td>
-							<td id="employee_name" style="padding-left: 15px; padding-right:70px; color: Black; font-weight:bold;"></td>
-							<td id="employee_hospital_name" style ="padding-left:45px; color: Black; font-weight:bold;"></td>
-						</tr>
-					</table>
-
-				</div> -->
 			</div>
 
-		</section>
+
+<div id="loading">
+	<img src="https://cdn.dribbble.com/users/1245627/screenshots/2881169/loading-infinity-circles.gif" alt="GIF" style = "display:block; margin-left:auto; margin-right:auto; ">
+</div>
 
 
+	</section>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+
+
+
+
+			<script type="text/javascript">
+				function getLatestRecord(){
+					try
+					{
+						var TraineeAddress = $("#traineeAddress").val();
+						console.log(TraineeAddress);
+
+						var addressCheck = web3.isAddress(TraineeAddress);
+						if(addressCheck == true){
+							var Record = contract.See_Employee_Latest_Records(TraineeAddress, {from: account, gas: 3000000});
+							if(Record[0] == 0){
+								alert("Error: No Record Found !");
+							}else{
+								var TraineeID = Record[0];
+								var TraineeName = Record[1];
+								var TraineeHosName = Record[2];
+								var IDRecord = Record[3];
+								var RecordHashing = Record[4];
+								var Certificate = Record[5];
+								var Signature = Record[6];
+
+								$(".latest_record_result").show();
+								$("#TraineeID").val(TraineeID);
+								$("#TraineeName").val(TraineeName);
+								$("#TraineeHosName").val(TraineeHosName);
+								$("#IDRecord").val(IDRecord);
+								$("#RecordHashing").val(RecordHashing);
+								$("#Certificate").val(Certificate);
+								$("#Signature").val(Signature);
+
+								$("#CheckHash").click(function(){
+									const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+					        const url = "http://477bdce6.ngrok.io/user/checkHash?QR_Code=" + IDRecord + "&Record_Hashing=" + RecordHashing;
+
+					       // console.log(url);// site that doesn’t send Access-Control-*
+					        fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+					        .then(response => response.json())
+					        .then(contents => {
+					          var checkHash = contents;
+					         // alert(typeof(contents));
+					          var checkTrue = "1";
+					          //console.log(typeof(checkTrue));
+					          //alert(checkHash);
+					          if(checkHash == checkTrue){
+											$("#tick").show();
+					          }else{
+					            $("#cross").show();
+					          }
+					        });
+								});
+							}
+					}else
+					{
+							alert("Error: Invalid Address !");
+					}
+				}catch{
+					alert("Please Check Your Information Again !");
+				}
+
+
+				}
+			</script>
+
+			<script type="text/javascript">
+				function getFullRecord(){
+					try{
+						//$(".lds-roller").show();
+						var result;
+
+						var TraineeAddress = $("#EmpAddress").val();
+
+						var addressCheck = web3.isAddress(TraineeAddress);
+						if(addressCheck == true){
+
+							var EmployeeInfo = contract.See_Employee_Info(TraineeAddress, {from: account, gas : 3000000});
+							var EmployeeID = EmployeeInfo[0];
+							var EmployeeName = EmployeeInfo[1];
+							var EmployeeHospitalName = EmployeeInfo[2];
+
+							if(EmployeeID != 0){
+								$(".full_records_info_result").show();
+								$("#FRAddress").val(TraineeAddress);
+								$("#FRID").val(EmployeeID);
+								$("#FRName").val(EmployeeName);
+								$("#FRHName").val(EmployeeHospitalName);
+
+								contract.getListOfTraineesRecords(TraineeAddress, {from:account, gas: 6000000});
+
+								var listLength = contract.getListOfTraineesRecordsLength();
+
+								$(".record_header").show();
+								$(".result").show();
+
+								for(i = 1; i < listLength; i++){
+									result = contract.getFullRecords(i);
+
+									console.log(result);
+									// print result here
+							}
+						}else{
+								alert("Error: Couldn't find the Employee Info in the BlockChain !");
+							}
+					}else{
+							alert("Error: Invalid Address !");
+						}
+
+				}catch{
+						alert("Please check your information again !");
+					}
+
+					}
+
+
+
+
+			</script>
+
+			<div class="full_records_info_result">
+				<label for="" style="font-family: Lucida,Monaco, monospace; font-weight:bold; font-size:35px; margin-left:720px;margin-bottom:25px;">Trainee Full Records</label>
+				<div>
+					<label for="" style="margin-left:200px; font-weight:bold;">Trainee Address</label>
+					<input type="text" name="" value="" id = "FRAddress" disabled="" style="width:80%;font-weight:bold; margin-left:auto; margin-right:auto;">
+				</div>
+				<div class = "FRInfo" >
+					<div class="col-3-sm">
+						<label for="" style="margin-left:190px; font-weight:bold;">Trainee ID</label>
+						<input type="text" name="" value="" id="FRID" disabled="" style="margin-left:190px; font-weight:bold;">
+					</div>
+					<div class="col-3-sm">
+						<label for="" style="margin-left:320px; width:250px; font-weight:bold;">Trainee Name</label>
+						<input type="text" name="" value="" id="FRName" disabled="" style="margin-left:320px; font-weight:bold;">
+					</div>
+					<div class="col-3-sm">
+						<label for="" style="margin-left:450px;width:300px; font-weight:bold;">Trainee Hospital Name</label>
+						<input type="text" name="" value="" id="FRHName" disabled="" style="margin-left:450px; font-weight:bold;">
+					</div>
+				</div>
+			</div>
+
+			<div class="full_record_details_result">
+				<div class="record_header" style="margin-top: 30px;">
+					<table id="table_header">
+						<tr>
+							<th style="width: 120px; text-align:center; font-weight:bold; font-size:20px; color: white; background-color:Black;">ID Record</th>
+							<th style="width:500px; text-align:center;  font-weight:bold; font-size:20px; color: white; background-color:Black;">Record Hashing</th>
+							<th style="width:300px; text-align:center;  font-weight:bold; font-size:20px; color: white; background-color:Black;">Certificate</th>
+							<th style="width:auto; text-align:center;  font-weight:bold; font-size:20px; color: white; background-color:Black;">Signature</th>
+						</tr>
+						<tr class="result">
+							<td id="RID" style="width: 120px;"></td>
+							<td id="RHASHING" style="width: 500px;"></td>
+							<td id="RCER" style="width: 300px;"></td>
+							<td id="RSIG" style="width:auto;"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+
+		<div class="latest_record_result">
+			<label for="" style="font-family: Lucida,Monaco, monospace; font-weight:bold; font-size:35px; margin-left:720px;margin-bottom:25px;">Trainee Latest Record</label>
+			<div class="row gtr-uniform">
+				<div class="col-6 col-12-xsmall">
+					<label for="">Trainee ID</label>
+					<input disabled="" type="text" name="" id="TraineeID" value="" style="color:black; font-weight:bold;"/>
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<label for="">Trainee Name</label>
+					<input type="text" name="" id="TraineeName" value="" disabled="" style="color:black; font-weight:bold;"/>
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<label for="">Trainee Hospital Name</label>
+					<input type="text" name="" id="TraineeHosName" value="" disabled="" style="color:black; font-weight:bold;"/>
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<label for="">ID Record</label>
+					<input type="text" name="" id="IDRecord" value="" disabled="" style="color:black; font-weight:bold;"/>
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<label for="">Record Hashing</label>
+					<input type="text" name="" id="RecordHashing" value="" disabled="" style="color:black; font-weight:bold;"/>
+				</div>
+				<div class="col-6 col-12-xsmall">
+					<label for="">Certificate</label>
+					<input type="text" name="" id="Certificate" value="" disabled="" style="color:black; font-weight:bold;"/>
+				</div>
+				<div>
+					<label for="" style="margin-left:0px; width:100%;">Signature</label>
+					<input type="text" name="" id="Signature" value=""  disabled="" style="display: auto;width:1320px; margin-left: 0px; margin-bottom:20px; color:black; font-weight:bold;"/>
+				</div>
+				<div id="tick">
+						<img src="images/checkmark.jpg" alt="Tick Icon" style="width:30px;margin-top: 45px; display: block; margin-left: auto; margin-right: auto;">
+						<p>The record is still integral !</p>
+				</div>
+				<div id="cross">
+						<img src="images/cross.jpg" alt="Cross Icon" style="width:30px;margin-top: 45px; display: block; margin-left: auto; margin-right: auto;">
+						<p>The record isn't match !</p>
+				</div>
+				<div style="float:right; width:250px; margin-left:50px;">
+					<button type="button" id="CheckHash" name="button" style="width:200px; margin-top: 45px;">Check Hashing</button>
+				</div>
+
+	</div>
+
+
+		</div>
+
+		<script type="text/javascript">
+			$(function(){
+				$(".latest_record_result").hide();
+				$("#tick").hide();
+				$("#cross").hide();
+				$(".full_records_info_result").hide();
+				$(".record_header").hide();
+
+
+			});
+		</script>
 
 		<!-- Footer -->
 		<footer id="footer">
@@ -165,18 +363,14 @@
 			</div>
 		</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<!-- show hide -->
+
+
 			<script>
 				$(function() {
 					$("select").change(function() {
 						if($(this).val() == "full_choice") {
 							$(".full_records").show();
+							$(".latest_record_result").hide();
 							//hide other forms
 							$(".latest_records").hide();
 
@@ -461,6 +655,37 @@
 	},
 	{
 		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getFullRecords",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [],
 		"name": "getListOfHospitals",
 		"outputs": [
@@ -529,6 +754,20 @@
 				],
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTraineesRecordsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -722,7 +961,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
+]).at('0xa703fb9cc5e5c0363d51e2df1877c889a2b1ad58');
 
 			</script>
 
