@@ -72,7 +72,7 @@
 				<div class="authorise_button">
 					<br>
 					<br>
-					<button type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; margin-bottom:40px;" onclick=getFullRecord()>Search</button>
+					<button id="FRSearch" type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; margin-bottom:40px;" onclick=getFullRecord() >Search</button>
 				</div>
 
 
@@ -87,13 +87,13 @@
 
 
 				<br>
-				<button type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; padding-bottom:15px;" onclick=getLatestRecord()>Search</button>
+				<button id= "LRSearch" type="button" class="btn btn-primary" style="color: Black; font-weight:bold; font-size: 20px; width: 170px;float: right; padding-bottom:15px;" onclick=getLatestRecord()>Search</button>
 
 			</div>
 
 
 <div id="loading">
-	<img src="https://cdn.dribbble.com/users/1245627/screenshots/2881169/loading-infinity-circles.gif" alt="GIF" style = "display:block; margin-left:auto; margin-right:auto; ">
+	<img src="https://steemitimages.com/DQmSw6gnBhvxPzJRBjSDZZJRajZNKmt2BBc3eM1cYHTkW2e/blockchain-broadcast-varification.gif" alt="GIF" style = "display:block; margin-left:auto; margin-right:auto; width:20%; height:250px; margin-bottom: 50px;">
 </div>
 
 
@@ -174,6 +174,7 @@
 
 			<script type="text/javascript">
 				function getFullRecord(){
+					$("#loading").fadeIn(400,"linear");
 					try{
 						//$(".lds-roller").show();
 						var result;
@@ -189,6 +190,7 @@
 							var EmployeeHospitalName = EmployeeInfo[2];
 
 							if(EmployeeID != 0){
+							//	$("#loading").hide();
 								$(".full_records_info_result").show();
 								$("#FRAddress").val(TraineeAddress);
 								$("#FRID").val(EmployeeID);
@@ -202,29 +204,53 @@
 								$(".record_header").show();
 								$(".result").show();
 
-								for(i = 1; i < listLength; i++){
+								for(i = listLength - 1; i > 0; i--){
 									result = contract.getFullRecords(i);
 
-									console.log(result);
+									var obj = {
+    													IDRecord : result[0],
+    													Hashing : result[1],
+    													Certificate : result[2],
+    													Signature : result[3]
+									};
+
+									var $row = $('<tr>'+
+      												 '<td>'+obj.IDRecord+'</td>'+
+      									 			 '<td>'+obj.Hashing+'</td>'+
+      									 			 '<td>'+obj.Certificate+'</td>'+
+															 '<td>'+obj.Signature+'</td>'+
+      									 			 '</tr>');
+
+									$('table> tbody:last').append($row);
+
+									//console.log(result);
 									// print result here
+
 							}
+							$(".check_full_records").show();
+							$("#loading").fadeOut(1000);
+							$("#CheckFR").click(function(){
+								alert("Hello");
+							});
 						}else{
 								alert("Error: Couldn't find the Employee Info in the BlockChain !");
+								$("#loading").hide();
 							}
 					}else{
 							alert("Error: Invalid Address !");
+								$("#loading").hide();
 						}
 
 				}catch{
 						alert("Please check your information again !");
+							$("#loading").hide();
 					}
 
 					}
-
-
-
 
 			</script>
+
+
 
 			<div class="full_records_info_result">
 				<label for="" style="font-family: Lucida,Monaco, monospace; font-weight:bold; font-size:35px; margin-left:720px;margin-bottom:25px;">Trainee Full Records</label>
@@ -249,22 +275,21 @@
 			</div>
 
 			<div class="full_record_details_result">
-				<div class="record_header" style="margin-top: 30px;">
+				<div class="record_header" style="margin-top: 45px;">
 					<table id="table_header">
 						<tr>
-							<th style="width: 120px; text-align:center; font-weight:bold; font-size:20px; color: white; background-color:Black;">ID Record</th>
-							<th style="width:500px; text-align:center;  font-weight:bold; font-size:20px; color: white; background-color:Black;">Record Hashing</th>
-							<th style="width:300px; text-align:center;  font-weight:bold; font-size:20px; color: white; background-color:Black;">Certificate</th>
-							<th style="width:auto; text-align:center;  font-weight:bold; font-size:20px; color: white; background-color:Black;">Signature</th>
+							<th style="width: 150px; text-align:center; font-weight:bold; font-size:15px; color: white; background-color:Black;">ID Record</th>
+							<th style="width:500px; text-align:center;  font-weight:bold; font-size:15px; color: white; background-color:Black;">Record Hashing</th>
+							<th style="width:300px; text-align:center;  font-weight:bold; font-size:15px; color: white; background-color:Black;">Certificate</th>
+							<th style="width:auto; text-align:center;  font-weight:bold; font-size:15px; color: white; background-color:Black;">Signature</th>
 						</tr>
-						<tr class="result">
-							<td id="RID" style="width: 120px;"></td>
-							<td id="RHASHING" style="width: 500px;"></td>
-							<td id="RCER" style="width: 300px;"></td>
-							<td id="RSIG" style="width:auto;"></td>
-						</tr>
+
 					</table>
 				</div>
+			</div>
+
+			<div class="check_full_records">
+				<button id="CheckFR" type="button" class="btn btn-primary" style="color: Black; font-size: 15px; width: 250px; margin-left: 1600px;  margin-bottom: 25px;" >Check Records</button>
 			</div>
 
 
@@ -323,6 +348,8 @@
 				$("#cross").hide();
 				$(".full_records_info_result").hide();
 				$(".record_header").hide();
+				$("#loading").hide();
+				$(".check_full_records").hide();
 
 
 			});
@@ -372,13 +399,19 @@
 							$(".full_records").show();
 							$(".latest_record_result").hide();
 							//hide other forms
+							//$("#loading").show();
 							$(".latest_records").hide();
+							$(".check_full_records").hide();
+							$("#EmpAddress").val('');
 
 						}
 						else if($(this).val() == "latest_choice") {
 							$(".full_records").hide();
 							//hide other forms
 							$(".latest_records").show();
+							$(".full_records_info_result").hide();
+							$(".full_record_details_result").hide();
+							$("#traineeAddress").val('');
 
 						}
 						else {
