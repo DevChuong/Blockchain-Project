@@ -113,13 +113,14 @@
 					try
 					{
 						var TraineeAddress = $("#traineeAddress").val();
-						console.log(TraineeAddress);
+				//		console.log(TraineeAddress);
 
 						var addressCheck = web3.isAddress(TraineeAddress);
 						if(addressCheck == true){
 							var Record = contract.See_Employee_Latest_Records(TraineeAddress, {from: account, gas: 3000000});
 							if(Record[0] == 0){
 								alert("Error: No Record Found !");
+								$(".latest_record_result").hide();
 							}else{
 								var TraineeID = Record[0];
 								var TraineeName = Record[1];
@@ -141,7 +142,7 @@
 								$("#CheckHash").click(function(){
 									const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-					        const url = "http://477bdce6.ngrok.io/user/checkHash?QR_Code=" + IDRecord + "&Record_Hashing=" + RecordHashing;
+					        const url = "http://537ffc98.ngrok.io/user/checkHash?QR_Code=" + IDRecord + "&Record_Hashing=" + RecordHashing;
 
 					       // console.log(url);// site that doesn’t send Access-Control-*
 					        fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
@@ -175,6 +176,7 @@
 			<script type="text/javascript">
 				function getFullRecord(){
 					$("#loading").fadeIn(400,"linear");
+					$(".cmp_full_record_details_result").hide();
 					try{
 						//$(".lds-roller").show();
 						var result;
@@ -200,9 +202,10 @@
 								contract.getListOfTraineesRecords(TraineeAddress, {from:account, gas: 6000000});
 
 								var listLength = contract.getListOfTraineesRecordsLength();
-
+							//	console.log(listLength);
+								$(".full_record_details_result").show();
 								$(".record_header").show();
-								$(".result").show();
+							//	$(".result").show();
 
 								for(i = listLength - 1; i > 0; i--){
 									result = contract.getFullRecords(i);
@@ -215,27 +218,25 @@
 									};
 
 									var $row = $('<tr>'+
-      												 '<td>'+obj.IDRecord+'</td>'+
-      									 			 '<td>'+obj.Hashing+'</td>'+
-      									 			 '<td>'+obj.Certificate+'</td>'+
-															 '<td>'+obj.Signature+'</td>'+
+      												 '<td style = "color: Black; font-weight:bold;">'+obj.IDRecord+'</td>'+
+      									 			 '<td style = "color: Black; font-weight:bold;">'+obj.Hashing+'</td>'+
+      									 			 '<td style = "color: Black; font-weight:bold;">'+obj.Certificate+'</td>'+
+															 '<td style = "color: Black; font-weight:bold;">'+obj.Signature+'</td>'+
       									 			 '</tr>');
 
 									$('table> tbody:last').append($row);
 
 									//console.log(result);
 									// print result here
-
 							}
 							$(".check_full_records").show();
 							$("#loading").fadeOut(1000);
-							$("#CheckFR").click(function(){
-								alert("Hello");
-							});
+
 						}else{
 								alert("Error: Couldn't find the Employee Info in the BlockChain !");
 								$("#loading").hide();
 							}
+
 					}else{
 							alert("Error: Invalid Address !");
 								$("#loading").hide();
@@ -245,9 +246,7 @@
 						alert("Please check your information again !");
 							$("#loading").hide();
 					}
-
-					}
-
+			}
 			</script>
 
 
@@ -274,6 +273,22 @@
 				</div>
 			</div>
 
+			<div class="cmp_full_record_details_result" style="width:80%; margin-left:190px">
+				<div class="cmp_record_header" style="margin-top: 45px;">
+					<table id="cmp_table_header">
+						<tr>
+							<th style="width: 150px; text-align:center; font-weight:bold; font-size:17px; color: white; background-color:Black;margin-left:260px;">ID Record</th>
+							<th style="width:500px; text-align:center;  font-weight:bold; font-size:17px; color: white; background-color:Black;">Record Hashing</th>
+							<th class="iCon" style="width:100px; text-align:center;  font-weight:bold; font-size:17px; color: white; background-color:Black;">Integrity</th>
+
+						</tr>
+
+			</table>
+
+
+				</div>
+			</div>
+
 			<div class="full_record_details_result">
 				<div class="record_header" style="margin-top: 45px;">
 					<table id="table_header">
@@ -283,13 +298,106 @@
 							<th style="width:300px; text-align:center;  font-weight:bold; font-size:15px; color: white; background-color:Black;">Certificate</th>
 							<th style="width:auto; text-align:center;  font-weight:bold; font-size:15px; color: white; background-color:Black;">Signature</th>
 						</tr>
+	</table>
 
-					</table>
 				</div>
 			</div>
 
+
+
+<script type="text/javascript">
+	function cmpRecords(){
+							var TraineeAddress = $("#FRAddress").val();
+							$("#loading").fadeIn(400,"linear");
+							$(".full_record_details_result").hide();
+							$(".cmp_full_record_details_result").show();
+
+						//	$(".record_header").hide();
+
+							contract.getListOfTraineesRecords(TraineeAddress, {from:account, gas: 6000000});
+							var listLengthCmp = contract.getListOfTraineesRecordsLength();
+
+							//for(i = listLengthCmp - 1; i > 0; i--){
+							for(i = 1; i < listLengthCmp; i++){
+
+	 // console.log(url);// site that doesn’t send Access-Control-*
+	 							var fetchCheckHash = function(){
+
+									var resultCmp = contract.getFullRecords(i);
+								//	console.log(i);
+									var ID_Record = resultCmp[0];
+								//	console.log(resultCmp[0]);
+									var Record_hashing = resultCmp[1];
+							//		console.log(resultCmp[1]);
+									//console.log(resultCmp);
+									const proxyurl = "https://cors-anywhere.herokuapp.com/";
+
+									const url = "http://537ffc98.ngrok.io/user/checkHash?QR_Code="+ resultCmp[0] + "&Record_Hashing=" + resultCmp[1];
+							//		console.log(url);
+
+									fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+									.then(response => response.json())
+									.then(contents => {
+
+											var checkHash = contents;
+									//		console.log(checkHash);
+											var checkTrue = "1";
+											if(checkHash == checkTrue){
+												var obj_cmp = {
+													IDRecord : ID_Record ,
+													Hashing : Record_hashing
+												};
+										//		console.log(obj_cmp);
+
+												//var TickSign = '<span class="glyphicon glyphicon-ok"></span>';
+										//	console.log("Succeed!");
+											//	fetchCheckHash();
+
+												var $rowCmp = $('<tr>'+
+																		 '<td style="text-align:center; color: Black; font-weight:bold;" >'+obj_cmp.IDRecord+'</td>'+
+																		 '<td style = "color: Black; font-weight:bold;">'+obj_cmp.Hashing+'</td>'+
+																		 '<td style="text-align:center; color: Black; font-weight:bold;" >'+ 'true' +'</td>'+
+																		 '</tr>');
+											//	$('table> tbody:last').append($rowCmp);
+												$('#cmp_table_header > tbody:last').append($rowCmp);
+												$('td:contains("true")').html("<i class='fa fa-check' aria-hidden='true'></i>").addClass("iCon");
+
+											}else{
+												var obj_cmp = {
+													IDRecord :  ID_Record,
+													Hashing : Record_hashing
+												};
+
+												var CrossSign = '<span class="glyphicon glyphicon-remove"></span>';
+
+
+												var $rowCmp = $('<tr>'+
+																		 		'<td style="text-align:center; color: Black; font-weight:bold;" >'+obj_cmp.IDRecord+'</td>'+
+																				'<td style = "color: Black; font-weight:bold;">'+obj_cmp.Hashing+'</td>'+
+																				'<td style="text-align:center; color: Black; font-weight:bold;" >'+ 'true' +'</td>'+
+																				'</tr>');
+												//$('table> tbody:last').append($rowCmp);
+												$('#cmp_table_header > tbody:last').append($rowCmp);
+												$('td:contains("false")').html("<i class='fa fa-times' aria-hidden='true'></i>").addClass("iCon");
+
+												//alert(obj_cmp.IDRecord, obj_cmp.Hashing, CrossSign);
+
+										//		console.log("Failed!");
+												//	fetchCheckHash();
+											}
+									});
+								}
+								fetchCheckHash();
+							}
+							$("#loading").fadeOut(6000);
+							$('.check_full_records').hide();
+	}
+</script>
+
+
+
 			<div class="check_full_records">
-				<button id="CheckFR" type="button" class="btn btn-primary" style="color: Black; font-size: 15px; width: 250px; margin-left: 1600px;  margin-bottom: 25px;" >Check Records</button>
+				<button id="CheckFR" type="button" class="btn btn-primary" style="color: Black; font-size: 15px; width: 250px; margin-left: 1600px;  margin-bottom: 25px;" onclick=cmpRecords()>Check Records</button>
 			</div>
 
 
@@ -297,32 +405,32 @@
 			<label for="" style="font-family: Lucida,Monaco, monospace; font-weight:bold; font-size:35px; margin-left:720px;margin-bottom:25px;">Trainee Latest Record</label>
 			<div class="row gtr-uniform">
 				<div class="col-6 col-12-xsmall">
-					<label for="">Trainee ID</label>
-					<input disabled="" type="text" name="" id="TraineeID" value="" style="color:black; font-weight:bold;"/>
+					<label for="" style= "margin-left:15px;">Trainee ID</label>
+					<input disabled="" type="text" name="" id="TraineeID" value="" style="margin-left:15px;color:black; font-weight:bold;"/>
 				</div>
 				<div class="col-6 col-12-xsmall">
 					<label for="">Trainee Name</label>
 					<input type="text" name="" id="TraineeName" value="" disabled="" style="color:black; font-weight:bold;"/>
 				</div>
 				<div class="col-6 col-12-xsmall">
-					<label for="">Trainee Hospital Name</label>
-					<input type="text" name="" id="TraineeHosName" value="" disabled="" style="color:black; font-weight:bold;"/>
+					<label for="" style= "margin-left:15px;">Trainee Hospital Name</label>
+					<input type="text" name="" id="TraineeHosName" value="" disabled="" style="color:black; font-weight:bold; margin-left:15px;"/>
 				</div>
 				<div class="col-6 col-12-xsmall">
 					<label for="">ID Record</label>
 					<input type="text" name="" id="IDRecord" value="" disabled="" style="color:black; font-weight:bold;"/>
 				</div>
 				<div class="col-6 col-12-xsmall">
-					<label for="">Record Hashing</label>
-					<input type="text" name="" id="RecordHashing" value="" disabled="" style="color:black; font-weight:bold;"/>
+					<label for=""  style= "margin-left:15px;">Record Hashing</label>
+					<input type="text" name="" id="RecordHashing" value="" disabled="" style="color:black; font-weight:bold; margin-left:15px;"/>
 				</div>
 				<div class="col-6 col-12-xsmall">
 					<label for="">Certificate</label>
 					<input type="text" name="" id="Certificate" value="" disabled="" style="color:black; font-weight:bold;"/>
 				</div>
 				<div>
-					<label for="" style="margin-left:0px; width:100%;">Signature</label>
-					<input type="text" name="" id="Signature" value=""  disabled="" style="display: auto;width:1320px; margin-left: 0px; margin-bottom:20px; color:black; font-weight:bold;"/>
+					<label for="" style="margin-left:15px; width:100%;">Signature</label>
+					<input type="text" name="" id="Signature" value=""  disabled="" style="display: auto;width:1320px; margin-left: 15px; margin-bottom:20px; color:black; font-weight:bold;"/>
 				</div>
 				<div id="tick">
 						<img src="images/checkmark.jpg" alt="Tick Icon" style="width:30px;margin-top: 45px; display: block; margin-left: auto; margin-right: auto;">
@@ -350,6 +458,9 @@
 				$(".record_header").hide();
 				$("#loading").hide();
 				$(".check_full_records").hide();
+				$(".cmp_full_record_details_result").hide();
+				//$("#cmp_table_header").hide();
+			//	$(".cmp_full_record_details_result").hide();
 
 
 			});
@@ -396,22 +507,33 @@
 				$(function() {
 					$("select").change(function() {
 						if($(this).val() == "full_choice") {
+							/*setInterval(function() {
+             cache_clear()
+					 });*/
 							$(".full_records").show();
 							$(".latest_record_result").hide();
 							//hide other forms
 							//$("#loading").show();
 							$(".latest_records").hide();
 							$(".check_full_records").hide();
+
+							$(".full_record_details_result").hide();
+
 							$("#EmpAddress").val('');
+
 
 						}
 						else if($(this).val() == "latest_choice") {
+
 							$(".full_records").hide();
 							//hide other forms
 							$(".latest_records").show();
 							$(".full_records_info_result").hide();
 							$(".full_record_details_result").hide();
 							$("#traineeAddress").val('');
+							$(".cmp_full_record_details_result").hide();
+							$("#tick").hide();
+							$("#cross").hide();
 
 						}
 						else {
@@ -422,6 +544,11 @@
 					});
 
 				});
+
+				function cache_clear() {
+	 			window.location.reload(true);
+			};
+
 
 			</script>
 
@@ -994,7 +1121,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0xa703fb9cc5e5c0363d51e2df1877c889a2b1ad58');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
 			</script>
 

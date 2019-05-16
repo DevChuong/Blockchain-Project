@@ -11,6 +11,13 @@
 	padding: 50px;
 }
 
+.fa-check {
+  color:green;
+}
+.fa-times {
+  color:red;
+}
+
 
 .full_records {
 	display: none;
