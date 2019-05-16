@@ -1,22 +1,22 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Add records blockchain project</title>
+		<title>Unauthorizing</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script src="./node_modules/web3/dist/web3.min.js"></script>
-		<link rel="stylesheet" href="./cssfiles/addrecord.css">
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html">Block chain project</a>
+				<a class="logo" href="index.html">Blockchain ProJect</a>
+
 				<div style="background-color: #00ff00; color: black;">
-					<input type="text" id="Account_Address" disabled="" size="73">
+					<input type="text" id="Account_Address" disabled="" size="73" style="width: 670px;font-weight: 600;">
 				</div>
 
 				<nav>
@@ -29,7 +29,7 @@
 					<ul class="links">
 						<li><a href="index.html">Home</a></li>
 						<li><a href="Authorise.html">Authorize</a></li>
-						<li><a href="Unauthorize.html">Unauthorize</a></li>
+						<li><a href="Unauthorise.html">Unauthorize</a></li>
 						<li><a href="Add_Records.html">Add records</a></li>
 						<li><a href="Look_Up.html">Look up info</a></li>
 						<li><a href="Sign_Verify.html">Sign/Verify</a></li>
@@ -41,107 +41,78 @@
 			<section id="banner">
 				<div class="inner">
 					<h1>Block chain in health care</h1>
-					<p>This website is used for authorizing/unauthorizing, adding records and looking up information from the system<br />
-					it also used for signing and verifying message.</p>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
 			</section>
 
-		<!-- phần front end  -->
+		<!-- Highlights -->
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<h2>Add records</h2>
-						<p>Make sure you are using the right authorized account!.</p>
+						<h2 style="color:Black;">Unauthorize employees/hospitals</h2>
+						<p style="color:black; font-weight:bold;">Make sure you are using the right authorized account!.</p>
 					</header>
-					<h3>Employee information</h3>
 
+					<!-- Select Section -->
+						<div class="col-12">
+							<select name="select_unauth" id="category">
+								<option value="" style="color:black; font-weight:bold;">- Select the one you want to unauthorize -</option>
+								<option  value="utr" style="color:black; font-weight:bold;">Trainees</option>
+								<option  value="uhpt" style="color:black; font-weight:bold;">Hospitals</option>
+							</select>
 
-			<!-- Add record form -->
-					<form method="post" action="#">
-						<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall">
-								<input disabled="" readonly="" type="text" name="hos_add" id="hos_add" value="" placeholder="Hospital address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_add" id="emp_add" value="" placeholder="Employee Address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_ID" id="emp_ID" value="" placeholder="Employee ID" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_name" id="emp_name" value="" placeholder="Employee name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="hos_name" id="trainee_hos_name" value="" placeholder=" Trainee Hospital Name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="id_record" id="id_record" value="" placeholder="ID  record" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="record_hashing" id="record_hashing" value="" placeholder="Record Hashing" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="certificate" id="certificate" value="" placeholder="Certificate" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="signature" id="signature" value="" placeholder="Signature" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<a href="#" id="add_rec" class="button primary">Submit</a>
-							</div>
-
-						</div>
-					</form>
-
-			<!-- Confirm table -->
-				<div class="confirm_table">
-					<div class="row gtr-uniform">
-							<div class="col-6 col-12-xsmall">
-								<input disabled="" readonly="" type="text" name="hos_add" id="hos_add" value="" placeholder="Hospital address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_add" id="emp_add" value="" placeholder="Employee Address" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="hos_name" id="trainee_hos_name" value="" placeholder=" Trainee Hospital Name" />
+					<!-- Form trainee -->
+							<div id = "form_utrainee" class="col-12">
+								<br>
+								<br>
+								<h3 style="color:black; font-weight:bold;">Unauthorize trainee</h3>
+								<form method="post" action="#">
+									<div class="row gtr-uniform">
+										<div class="col-6 col-12-xsmall" style="color:black; font-weight:bold;">
+											Input Trainee Address Here:
+											<br>
+											<input type="text" name="unauth_emp_add" id="unauth_emp_add" value="" placeholder="Trainee Address" style="color:black; font-weight:bold;"/>
+										</div>
+										<div class="col-6 col-12-xsmall" style="color:black; font-weight:bold;">
+											Input Trainee ID Here:
+											<br>
+											<input type="text" name="unauth_emp_ID" id="unauth_emp_ID" value="" placeholder="Trainee ID" style="color:black; font-weight:bold;" />
+										</div>
+										<div class="col-6 col-12-xsmall" style="color:black; font-weight:bold;">
+											Hospital Address:
+											<br>
+											<input type="text" style="color:black; font-weight:bold;" name="unauth_emp_hos_add" id="unauth_emp_hos_add" value="" placeholder="Hospital Address" / readonly="" disabled="" >
+										</div>
+										<div class="col-6 col-12-xsmall">
+												<a href="#" id="unemp_submit" class="button primary" style="margin-top: 25px; width: 170px; font-size: 20px;">Unauthorize</a>
+										</div>
+									</div>
 							</div>
 
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_ID" id="emp_ID" value="" placeholder="Employee ID" />
+					<!-- Form hospital -->
+							<div id = "form_uhospital" class="col-12">
+								<br>
+								<br>
+								<h3 style="color:black; font-weight:bold;">Unauthorize hospital</h3>
+								<form method="post" action="#">
+									<div class="row gtr-uniform">
+										<div class="col-6 col-12-xsmall" style="color:black; font-weight:bold;">
+											Input the Hospital Address here:
+											<br>
+											<input type="text" name="unauth_hos_add" id="unauth_hos_add" value="" placeholder="Hospital Address" style="color:black; font-weight:bold;" />
+										</div>
+										<div class="col-6 col-12-xsmall" style="color:black; font-weight:bold;">
+											Input the Hospital ID here:
+											<br>
+											<input type="text" name="unauth_hos_ID" id="unauth_hos_ID" value="" placeholder="Hospital ID" style="color:black; font-weight:bold;" />
+										</div>
+										<div class="col-6 col-12-xsmall">
+												<a href="#" id="unhos_submit" class="button primary" style="margin-left: 1140px;">Unauthorize</a>
+										</div>
+									</div>
 							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="emp_name" id="emp_name" value="" placeholder="Employee name" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="id_record" id="id_record" value="" placeholder="ID  record" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="record_hashing" id="record_hashing" value="" placeholder="Record Hashing" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="certificate" id="certificate" value="" placeholder="Certificate" />
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<input type="text" name="signature" id="signature" value="" placeholder="Signature" />
-							</div>
-
-					</div>
-
-				</div>
-
-			<!-- phần frontend gọi api -->
-			<br>
-			<br>
-			<br>
-			<div class="api_section">
-				<button id="api">Gọi api</button>
-				<div id="outputAPI"></div>
-			</div>
-
-
-
-
 			</section>
 
 		<!-- Footer -->
@@ -157,7 +128,7 @@
 							<ul class="alt">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="auth_all.html">Authorize</a></li>
-								<li><a href="unauth.html">Unauthorize</a></li>
+								<li><a href="add_rec.html">Add records</a></li>
 								<li><a href="lookuppage.html">Look up info</a></li>
 								<li><a href="signverifymessage.html">Sign/Verify</a></li>
 								<li><a href="lookuprecords.html">Employee records</a></li>
@@ -185,79 +156,110 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
-		<!-- Phần Add record  -->
-			<script>
-				$(document).ready(function(){
-					$("#add_rec").click(function(){
-						try {
-							var HospitalAddress = $("#hos_add").val();
-							var TraineeAddress = $("#emp_add").val();
-							var TraineeID = $("#emp_ID").val();
-							var TraineeName = $("#emp_name").val();
-							var TraineeHospitalName = $("#trainee_hos_name").val();
-							var IDRecord = $("#id_record").val();
-							var RecordHashing = $("#record_hashing").val();
-							var Certificate = $("#certificate").val();
-							var Signature = $("#signature").val();
-
-							contract.Add_Records(HospitalAddress,TraineeAddress,TraineeID,TraineeName,TraineeHospitalName,IDRecord,RecordHashing,Certificate,Signature,{from : account, gas: 3000000});
-							alert("The record has been added !");
-						} catch{
-							if(account != HospitalAddress) {
-								alert("Error: the account does not match !");
-							}else {
-								alert("Please check your information again !");
-							}
-
-
-						}
-					});
-				});
-
-				function cache_clear() {
-					window.location.reload(true);
-				}
-
-
-			</script>
-
 			<script>
 				$(function(){
 					$("#Account_Address").val( "Index: " + index +" Account address: " + account);
-					$("#hos_add").val(account);
+					$("#unauth_emp_hos_add").val(account);
 				});
 			</script>
 
-		<!-- PHẦN GỌI API  -->
-
-		<script>
-			document.getElementById("api").addEventListener("click",getValue)
-			function getValue() {
-			    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-	    	    const url = "http://fad141e0.ngrok.io/resources/books/all";
-				fetch(proxyurl + url)
-				.then(function(response){
-					return response.json();
-				})
-				.then(function(data) {
-					let result = ` <h2> User Info From books... </h2>`;
-					data.forEach((user) => {
-		            const { id, name } = user
-		            result +=
-		            `<div>
-		                <h5> User ID: ${id} </h5>
-		                <ul class="w3-ul">
-		                    <li> User Name : ${name}</li>
-		                </ul>
-		            </div>`;
-
-					})
-					document.getElementById("outputAPI").innerHTML = result;
-
+		<!-- Show Hide Section -->
+			<script>
+				$(document).ready(function(){
+					$('select[name="select_unauth"]').change(function(){
+						if ($(this).val()=="utr") {
+							$('#form_utrainee').show(500);
+						} else {
+							$('#form_utrainee').hide(500);
+						}
+					});
+					$('select[name="select_unauth"]').change(function(){
+						if ($(this).val()=="uhpt") {
+							$('#form_uhospital').show(500);
+						} else {
+							$('#form_uhospital').hide(500);
+						}
+					});
 				});
-			}
-		</script>
+			</script>
+
+		<!-- Unauth emp -->
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#unemp_submit").click(function(){
+						try {
+							var HospitalAddress = $("#unauth_emp_hos_add:text").val();
+
+							var addressCheck = web3.isAddress(HospitalAddress);
+							if(addressCheck == true){
+								var TraineeAddress = $("#unauth_emp_add:text").val();
+								var TraineeID = $("#unauth_emp_ID").val();
+								contract.deleteEmployee(HospitalAddress, TraineeAddress, TraineeID, {from : account , gas : 3000000});
+	              setInterval(function()
+								{
+	              cache_clear()
+								});
+								alert("This Trainee has been deleted !");
+								}else
+								{
+								alert("Error: Invalid Address !");
+								}
+
+
+						}} catch
+						{
+                if(account != HospitalAddress)
+                {
+                  alert("The Hospital Address and your account address isn't match !");
+                  alert("Please check the information again !");
+                }
+                else
+								{
+                  alert("Error : Please check the information again !");
+                }
+            }
+					});
+				});
+				function cache_clear() {
+           window.location.reload(true);
+          };
+			</script>
+
+		<!-- Unauth hospital -->
+			<script type="text/javascript">
+				$(document).ready(function(){
+		          $("#unhos_submit").click(function(){
+		            try{
+		              var HospitalAddress = $("#unauth_hos_add").val();
+
+									var addressCheck = web3.isAddress(HospitalAddress);
+									if(addressCheck == true){
+										var HospitalID = $("#unauth_hos_ID").val();
+			              contract.deleteHospital(HospitalAddress, HospitalID, {from : account , gas : 3000000});
+			              setInterval(function() {
+			                cache_clear()
+			              });
+			              alert("This Hospital has been deleted !");
+									}else
+									{
+										alert("Error: Invalid Address !");
+									}
+
+
+		            }catch{
+		              if(account != web3.eth.accounts[0]){
+		                alert("Only National Authority can execute this !");
+		              }else{
+		                alert("Please check the information again !");
+		              }
+		            }
+		            function cache_clear() {
+		             window.location.reload(true);
+		            };
+
+		          });
+		        });
+    		</script>
 
 
 
@@ -518,6 +520,37 @@
 	},
 	{
 		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getFullRecords",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [],
 		"name": "getListOfHospitals",
 		"outputs": [
@@ -586,6 +619,20 @@
 				],
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTraineesRecordsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -779,11 +826,9 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
 			</script>
-
-
 
 
 	</body>

@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Industrious by TEMPLATED</title>
+		<title>Signing/Verifying Certificate</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -24,7 +24,7 @@
 				<a class="logo" href="index.html">Blockchain ProJect</a>
 
 				<div style="background-color: #00ff00; color: black; font-weight: bold;">
-					<input type="text" id="Account_Address" disabled="" size="73">
+					<input type="text" id="Account_Address" disabled="" size="73" style="width: 670px;font-weight: 600;">
 				</div>
 
 				<nav>
@@ -49,8 +49,8 @@
 			<section id="banner">
 				<div class="inner">
 					<h1>Block chain in health care</h1>
-					<p>This website is used for authorizing/unauthorizing, adding records and looking up information from the system<br />
-					it also used for signing and verifying message.</p>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
 			</section>
@@ -69,12 +69,12 @@
 
 	  	    <div class="sign_section">
 				<div class="description">
-					<p style="padding-bottom: 20px;font-size: 22px; font-family: Lucida,Monaco, monospace; color: Black; font-weight:bold;">Input the message you want to sign below. Then copy the signature and paste it into "Signature" field when adding Employee Records !</p>
+					<p style="padding-left: 500px; padding-bottom: 20px;font-size: 22px; font-family: Lucida,Monaco, monospace; color: Black; font-weight:bold;">Input the Certificate you want to sign below.</p>
 				</div>
 
 				<div class="message">
-					<h3 style="color: Black; font-weight:bold;">your message:</h3>
-					<input style="color: Black; font-weight:bold;" class="form-control" type="text" placeholder="Type your message here">
+					<h3 style="color: Black; font-weight:bold;">The Certificate:</h3>
+					<input style="color: Black; font-weight:bold;" class="form-control" type="text" placeholder="Type Certificate Here">
 				</div>
 
 
@@ -85,8 +85,8 @@
 		        	<br>
 		        	<br>
 		        	<br>
-		          <h3 id="signature" style="color: Black; font-weight:bold;">Your Signature:</h3>
-		          <p id="signature" style="color: Black; font-weight:bold;"></p>
+		          <h3 id="signature" style="color: Black; font-weight:bold;">The Signature:</h3>
+		          <p id="signature" style="color: Black; font-weight:bold; font-size:23px;"></p>
 		        </div>
 	    	</div>
 
@@ -191,7 +191,7 @@
 						var messageHashed = web3.sha3(message);
 						var signature = web3.eth.sign(account, messageHashed);
 						if(message == "") {
-							alert(" please input first");
+							alert("Error: Certificate field cannot be empty !");
 						} else {
 							$(".signature_result").show();
 							$("p#signature").text(signature);
@@ -200,6 +200,8 @@
 				});
 
 			</script>
+
+
 
 			<!-- verify message -->
 			<script>
@@ -479,6 +481,37 @@
 	},
 	{
 		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getFullRecords",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [],
 		"name": "getListOfHospitals",
 		"outputs": [
@@ -547,6 +580,20 @@
 				],
 				"name": "",
 				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTraineesRecordsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -740,7 +787,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
 			</script>
 

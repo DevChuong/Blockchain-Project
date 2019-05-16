@@ -1,31 +1,25 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Authorize blockchain project</title>
+		<title>HomePage</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<script src="./node_modules/web3/dist/web3.min.js"></script>
-		<link rel="stylesheet" href="./cssfiles/Authorize.css">
 
 
-
+	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="index.html">Block chain project</a>
-
-				<div style="background-color: #00ff00; color: black; font-weight: bold;">
-					<input type="text" id="Account_Address" disabled="" size="73">
-				</div>
+				<a class="logo" href="index.html">Blockchain ProJect</a>
 
 				<nav>
 					<a href="#menu">Menu</a>
 				</nav>
-
 			</header>
 
 			<!-- Nav -->
@@ -45,124 +39,95 @@
 			<section id="banner">
 				<div class="inner">
 					<h1>Block chain in health care</h1>
-					<p>This website is used for authorizing/unauthorizing, adding records and looking up information from the system<br />
-					it also used for signing and verifying message.</p>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
 				</div>
 				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
 			</section>
 
 		<!-- Highlights -->
 			<section class="wrapper">
-
-				<!-- Message -->
+				<div class="inner">
 					<header class="special">
-						<h2>Authorize employees/hospitals</h2>
-						<p>Make sure you are using the right authorized account!.</p>
+						<h2 style = "color: Black; font-weight:bold;">features</h2>
+						<p style="color: Black; font-weight:bold;">Make sure you are using the right authorized account!.</p>
 					</header>
-
-				<!-- Choice Section -->
-
-					<div id="choice_section">
-						<select name="category" id="category">
-							<option value="">- Select the one you want to authorize -</option>
-							<option value="hospital_choice">Authorizing Hospital</option>
-							<option value="employee_choice">Authorizing Employee</option>
-						</select>
+					<div class="highlights">
+						<section>
+							<div class="content">
+								<header>
+									<a href="Authorise.html" class="icon fa-check-square-o"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Authorize</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Authorization can be used by national authority to add hospital. And add new employee by hospital.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Unauthorize.html" class="icon fa-times"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Unauthorize</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Can be used for unauthorizing both hospitals and trainees. Make sure you are the national authority.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Add_Records.html" class="icon fa-floppy-o"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Add records</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Add working records of trainees, make sure you are in-charge of that trainees.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Look_Up.html" class="icon fa-search"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Look up info</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">You can look up information of the trainees and hospitals here.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Sign_Verify.html" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Sign/Verify message</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">Make sure the message comes from the right person.</p>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<header>
+									<a href="Look_Up_Records.html" class="icon fa-qrcode"><span class="label">Icon</span></a>
+									<h3 style="color: Black; font-weight:bold;">Employee records</h3>
+								</header>
+								<p style="color: Black; font-weight:bold;">You can either look up fully or partially trainees' records.</p>
+							</div>
+						</section>
 					</div>
-
-
-
-				<!-- Hospital Form -->
-					<div id="hospital_form">
-							<div class="row gtr-uniform">
-								<div class="col-8 col-12-xsmall">
-									Input your hospital address here:
-									<br>
-									<input type="text" id="hospital_address_field" />
-								</div>
-								<div class="col-8 col-12-xsmall">
-									Input your hospital ID here:
-									<br>
-									<input type="text" id="hospital_id_field" />
-								</div>
-								<div class="col-8 col-12-xsmall">
-									Input your hospital name here:
-									<br>
-									<input type="text" id="hospital_name_field" />
-								</div>
-								<div class="col-4">
-									<br>
-									<button id="hospital_button" class="btn primary">Authorize Hospital</button>
-								</div>
-							</div>
-					</div>
-
-				<!-- Employee Form -->
-					<div id="employee_form">
-						<div class="row gtr-uniform">
-							<div class="col-12 col-12-xsmall">
-								Input the hospital address that wants to authorize here:
-								<br>
-								<input disabled="" type="text" id="employee_hospital_address_field">
-							</div>
-							<div class="col-12 col-12-xsmall">
-								Input the Trainee Address here:
-								<br>
-								<input type="text" id="employee_trainee_address_field">
-							</div>
-							<div class="col-6 col-12-xsmall">
-								Input the Trainee ID Here:
-								<br>
-								<input type="text" id="employee_trainee_id_field">
-							</div>
-							<div class="col-6 col-12-xsmall">
-								Input the Trainee Name here:
-								<br>
-								<input type="text" id="employee_trainee_name_field">
-							</div>
-							<div class="col-6 col-12-xsmall">
-								Input the Hospital Name that the trainee wants to work for here:
-								<br>
-								<input type="text" id="employee_trainee_hospital_name_field">
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<br>
-								<button class="btn primary" id="employee_button">Authorize Employee</button>
-							</div>
-
-						</div>
-					</div>
-					<br>
-					<br>
-					<br>
-
-					<button onclick="getBooks()" class="col-6 col-12xsmall">FETCH API</button>
-					<div class="col-6 col-12xsmall" id="output"></div>
-
-
-
+				</div>
 			</section>
-
-
-
 
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
 					<div class="content">
 						<section>
-							<h3>About the project</h3>
+							<h3 >About the project</h3>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
 						</section>
 						<section>
 							<h4>Functions</h4>
 							<ul class="alt">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="unauth.html">Unauthorize</a></li>
-								<li><a href="add_rec.html">Add records</a></li>
-								<li><a href="lookuppage.html">Look up info</a></li>
-								<li><a href="signverifymessage.html">Sign/Verify</a></li>
-								<li><a href="lookuprecords.html">Employee records</a></li>
+								<li><a href="Authorise.html">Authorize.</a></li>
+								<li><a href="Unauthorise.html">Unauthorize.</a></li>
+								<li><a href="Add_Records.html">Add records.</a></li>
+								<li><a href="Look_Up.html">Look up trainee info.</a></li>
+								<li><a href="Sign_Verify.html">Sign/Verify message.</a></li>
+								<li><a href="Look_Up_Records.html">Employee records.</a></li>
 							</ul>
 						</section>
 						<section>
@@ -187,127 +152,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script>
-				$(function(){
-					$("#Account_Address").val( "Index: " + index +" Account address: " + account);
-					$("#employee_hospital_address_field").val(account);
-
-				});
-			</script>
-
-		<!-- Show - Hide Choice Section -->
-			<script>
-				$(function() {
-					$("select[name='category']").change(function(){
-						if($(this).val() == "hospital_choice") {
-							$("#hospital_form").show();
-						}else {
-							$("#hospital_form").hide();
-						}
-					});
-				$("select[name='category']").change(function(){
-						if($(this).val() == "employee_choice") {
-							$("#employee_form").show();
-
-						}else {
-							$("#employee_form").hide();
-						}
-					});
-
-				});
-
-			</script>
-
-		<!-- Authorize Hospital -->
-			<script>
-				$(function() {
-					$("#hospital_button").click(function(){
-							try{
-							var HospitalAddress = $("#hospital_address_field").val();
-							var HospitalID = $("#hospital_id_field").val();
-							var HospitalName = $("#hospital_name_field").val();
-							//  kiểm tra cái địa chỉ của bệnh viện xem đã bị lưu trên BC chưa thế nào?
-
-							contract.Authorise_Hospital(HospitalAddress,HospitalID,HospitalName, {from: account, gas:3000000});
-
-							setInterval(function(){
-								cache_clear();
-							})
-
-							alert("Your new hospital is added successfully !");
-						}catch(eer) {
-							if(account != web3.eth.accounts[0]) {
-								alert("Error: This is not the NA account,please change your account!");
-							} else {
-								alert("Error: Your information is not correct, please check again !");
-							}
-						}
-					});
-				});
-
-				function cache_clear() {
-					window.location.reload(true);
-				}
-
-			</script>
-
-		<!-- Authorize Employee -->
-			<script>
-				$(function() {
-					$("#employee_button").click(function() {
-						try{
-						var EmployeeHospitalAddress = $("#employee_hospital_address_field").val();
-						var TraineeAddress = $("#employee_trainee_address_field").val();
-						var TraineID = $("#employee_trainee_id_field").val();
-						var TraineeName = $("#employee_trainee_name_field").val();
-						var TraineeHospitalName = $("#employee_trainee_hospital_name_field").val();
-
-						contract.Add_Employees(EmployeeHospitalAddress,TraineeAddress,TraineID,TraineeName,TraineeHospitalName, {from: account, gas: 3000000});
-
-						setInterval(function(){
-							cache_clear();
-						})
-
-						alert("Your new employee is added successfully!");
-
-						} catch(eer) {
-							if(EmployeeHospitalAddress == "0x0000000000000000000000000000000000000000") {
-								alert("Error: please check the infomation again !");
-							}else {
-								alert("Error: please check the infomation again !");
-							}
-						}
-
-					});
-				});
-
-			</script>
-
-		<!-- Gọi APi -->
-			<script>
-				function getBooks() {
-				    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-		    	    const url = "http://fad141e0.ngrok.io/resources/books?id=1";
-					fetch(proxyurl + url)
-					.then((response) => response.json())
-					.then((data) =>{
-						let output = "<h2>Books</h2>";
-						data.forEach(function(book){
-							output = output + `
-							<ul>
-								<li>ID: ${book.id}</li>
-								<li>Name: ${book.name}</li>
-							</ul>
-							`;
-						});
-						document.getElementById("output").innerHTML = output;
-					});
-				}
-			</script>
-
-
-
-
 
 
 
@@ -829,17 +673,9 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x039b94acf82b88b67fc3aa9e62c6445be9a05b4a');
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
 
 			</script>
-
-
-
-
-
-
-
-
 
 	</body>
 </html>
