@@ -142,7 +142,7 @@
 								$("#CheckHash").click(function(){
 									const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-					        const url = "http://537ffc98.ngrok.io/user/checkHash?QR_Code=" + IDRecord + "&Record_Hashing=" + RecordHashing;
+					        const url = "http://278183dc.ngrok.io/user/checkHash?QR_Code=" + IDRecord + "&Record_Hashing=" + RecordHashing;
 
 					       // console.log(url);// site that doesn’t send Access-Control-*
 					        fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
@@ -332,7 +332,7 @@
 									//console.log(resultCmp);
 									const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-									const url = "http://537ffc98.ngrok.io/user/checkHash?QR_Code="+ resultCmp[0] + "&Record_Hashing=" + resultCmp[1];
+									const url = "http://278183dc.ngrok.io/user/checkHash?QR_Code="+ resultCmp[0] + "&Record_Hashing=" + resultCmp[1];
 							//		console.log(url);
 
 									fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
@@ -374,7 +374,7 @@
 												var $rowCmp = $('<tr>'+
 																		 		'<td style="text-align:center; color: Black; font-weight:bold;" >'+obj_cmp.IDRecord+'</td>'+
 																				'<td style = "color: Black; font-weight:bold;">'+obj_cmp.Hashing+'</td>'+
-																				'<td style="text-align:center; color: Black; font-weight:bold;" >'+ 'true' +'</td>'+
+																				'<td style="text-align:center; color: Black; font-weight:bold;" >'+ 'false' +'</td>'+
 																				'</tr>');
 												//$('table> tbody:last').append($rowCmp);
 												$('#cmp_table_header > tbody:last').append($rowCmp);
@@ -1121,7 +1121,7 @@
 		"stateMutability": "view",
 		"type": "function"
 	}
-]).at('0x023403ab74f409120836426281a260f198e7d6fa');
+]).at('0x5b8f2183a47b2badf6400f4044548c37abc0dd85');
 
 			</script>
 
