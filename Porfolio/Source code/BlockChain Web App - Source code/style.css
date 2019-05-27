@@ -1,0 +1,175 @@
+* {
+  margin:0;
+  padding :0;
+}
+
+body {
+  background-color: white;
+}
+
+.container {
+  width: 100%;
+}
+
+
+
+ul.list-inline {
+  padding-left: 50px;
+  padding-right: 50px;
+  list-style: none;
+  margin-left: -5px;
+
+}
+
+
+.hospital_info_result{
+  margin: 300px;
+  width: 1200px;
+  font-size: 20px;
+  font-family: Lucida,Monaco, monospace;
+}
+
+tr{
+  width:100%;
+}
+
+th{
+  padding-right: 30px;
+  width:450px;
+  font-size: 20px;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.title {
+    width: 40%;
+    border: 3px solid;
+    text-align: center;
+    margin-left: 500px;
+    margin-right: 250px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+.title h1{
+  font-family: Lucida,Monaco, monospace;
+}
+
+.warning h5 {
+    margin-left: 660px;
+    font-size: x-large;
+    color: red;
+    margin-bottom: 50px;
+}
+
+.hospital_info h3{
+  font-family: Lucida,Monaco, monospace;
+  margin-left: 200px;
+  margin-top: 50px;
+}
+
+
+.hospital_info input.form-control {
+    width: 75%;
+    margin-left: 200px;
+}
+
+.add_records h3{
+  font-family: Lucida,Monaco, monospace;
+  margin-left: 200px;
+  margin-top: 20px;
+}
+
+
+.add_records input.form-control {
+    width: 50%;
+    margin-left: 200px;
+}
+
+.clearfix {
+  overflow: auto;
+}
+.confirm_waiting h3{
+    margin-top: 250px;
+    margin-left: 300px;
+    font-family: Lucida,Monaco, monospace;
+}
+
+div#look_up {
+    margin-left: 100px;
+    margin-bottom: 50px;
+}
+
+div#look_up h2 {
+    font-size: xx-large;
+    font-weight: bolder;
+    color: blue;
+    font-family: Lucida,Monaco, monospace;
+}
+
+#banner h2{
+    text-align: center;
+    color: Black;
+    font-family: Lucida,Monaco, monospace;
+    font-weight: inherit;
+    padding-right: 150px;
+    margin-top:150px;
+}
+
+.span-caption {
+    display: inline-block;
+}
+
+span.caption1 {
+    clear: both;
+    display: inherit;
+    padding-left: 590px;
+    font-size: 30px;
+    color: darkblue;
+    font-family: Lucida,Monaco, monospace;
+}
+
+.hospital_searching_form button {
+    text-align: center;
+    font-weight: 500;
+    width: 200px;
+    font-size: 20px;
+    font-family: Lucida,Monaco, monospace;
+
+}
+
+.employee_searching_form button {
+    text-align: center;
+    font-weight: 500;
+    width: 200px;
+    font-size: 20px;
+    font-family: Lucida,Monaco, monospace;
+
+}
+
+.latest_records button {
+  text-align: center;
+  font-weight: 500;
+  width: 200px;
+  font-size: 20px;
+  font-family: Lucida,Monaco, monospace;
+}
+
+
+
+span.caption2 {
+    clear: both;
+    display: inherit;
+    padding-left: 280px;
+    font-size: 30px;
+    color: darkblue;
+    font-family: Lucida,Monaco, monospace;
+}
+
+span.glyphicon.glyphicon-search {
+    font-size: 28px;
+}

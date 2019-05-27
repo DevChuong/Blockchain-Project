@@ -1,0 +1,881 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Looking Up Information</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" type="text/css" href="cssfiles/lookuppage.css">
+		<script src="./node_modules/web3/dist/web3.min.js"></script>
+
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a class="logo" href="index.html">Blockchain ProJect</a>
+				<div style="background-color: #00ff00; color: black;">
+					<input type="text" id="Account_Address" disabled="" size="73" style="width: 670px;font-weight: 600;">
+				</div>
+
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+			<!-- Nav -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="Authorise.html">Authorize</a></li>
+						<li><a href="Unauthorize.html">Unauthorize</a></li>
+						<li><a href="Add_Records.html">Add records</a></li>
+						<li><a href="Look_Up.html">Look up info</a></li>
+						<li><a href="Sign_Verify.html">Sign/Verify</a></li>
+						<li><a href="Look_Up_Records.html">Employee records</a></li>
+					</ul>
+				</nav>
+
+		<!-- Banner -->
+			<section id="banner">
+				<div class="inner">
+					<h1>Block chain in health care</h1>
+					<p >This website's used for authorizing/unauthorizing, adding records and searching information from the system
+					It's also used for signing and verifying certificate.</p>
+				</div>
+				<video autoplay loop muted playsinline src="images/hospital.mp4"></video>
+			</section>
+
+		<!-- Highlights -->
+
+		<section>
+			<div class="lookup_section">
+					<select name="category" id="category">
+						<option value="none" style="color: Black; font-weight:bold;">- Select your choice please. -</option>
+						<option value="hospital_choice" style="color: Black; font-weight:bold;">Hospital Searching</option>
+						<option value="employee_choice" style="color: Black; font-weight:bold;">Employee Searching</option>
+					</select>
+			</div>
+
+
+			<div class="hospital_searching_form">
+				<form style="color: Black; font-weight:bold;">
+				Hospital Address:<br>
+				<input style="color: Black; font-weight:bold;" class="form-control-hospital-address" type="text" name="firstname" placeholder="Type your H.A address here" value="" >
+				<br><br>
+				</form>
+				<button >Search</button>
+			</div>
+
+
+			<div class="employee_searching_form">
+				<form style="font-weight:bold;color:black;">
+				Employee Address:<br>
+				<input style="font-weight:bold;color:black;" class="form-control-employee-address" type="text" name="firstname" placeholder="Type your employee address here" value="" >
+				<br><br>
+				</form>
+				<button >Search</button>
+			</div>
+
+	        <div class="hospital_info_result_table">
+
+	            <table>
+	              <tr>
+	                <th style="padding-right:250px; font-weight:bold;color:black;">Hospital Address <br> </th>
+	                <th style="padding-left: 105px; padding-right:70px;font-weight:bold;color:black;">Hospital ID <br> </th>
+	                <th style="padding-right:70px;font-weight:bold;color:black;">Hospital Name </th>
+	              </tr>
+	              <tr>
+	                <td id="hospital_address" style="font-weight:bold;color:black;"></td>
+	                <td id="hospital_id" style="padding-left: 135px; padding-right:70px;font-weight:bold;color:black;"></td>
+	                <td id="hospital_name" style ="padding-left:30px;font-weight:bold;color:black;"></td>
+	              </tr>
+	            </table>
+
+	        </div>
+
+			<div class="employee_info_result_table">
+				<table>
+					<tr>
+						<th style="padding-right:250px;font-weight:bold;color:black;">Employee ID <br> </th>
+						<th style="padding-left: 5px; padding-right:70px;font-weight:bold;color:black;"> Employee Name <br> </th>
+						<th style="padding-right:70px;font-weight:bold;color:black;">Employee Hospital Name </th>
+					</tr>
+					<tr>
+						<td id="employee_id" style="font-weight:bold;color:black;"></td>
+						<td id="employee_name" style="padding-left: 15px; padding-right:70px;font-weight:bold;color:black;"></td>
+						<td id="employee_hospital_name" style ="padding-left:45px;font-weight:bold;color:black;"></td>
+					</tr>
+				</table>
+			</div>
+
+
+
+
+
+
+		</section>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<div class="content">
+					<section>
+						<h3>About the project</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum..</p>
+					</section>
+					<section>
+						<h4>Functions</h4>
+						<ul class="alt">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="auth_all.html">Authorize</a></li>
+							<li><a href="unauth.html">Unauthorize</a></li>
+							<li><a href="add_rec.html">Add records</a></li>
+							<li><a href="signverifymessage.html">Sign/Verify</a></li>
+							<li><a href="lookuprecords.html">Employee records</a></li>
+						</ul>
+					</section>
+					<section>
+						<h4>Team social media</h4>
+						<ul class="plain">
+							<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+							<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+							<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+							<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+						</ul>
+					</section>
+				</div>
+				<div class="copyright">
+					&copy; This is the blockchain project website.
+				</div>
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<!-- show hide -->
+			<script>
+				$(function() {
+					$("select").change(function() {
+						if($(this).val() == "hospital_choice") {
+							$(".hospital_searching_form").show();
+							//hide other forms
+							$(".employee_searching_form").hide();
+
+						}
+						else if($(this).val() == "employee_choice") {
+							$(".employee_searching_form").show();
+							//hide other forms
+							$(".hospital_searching_form").hide();
+
+						}
+						else {
+
+							$(".hospital_searching_form").hide();
+							$(".employee_searching_form").hide();
+
+						}
+					});
+
+				});
+
+			</script>
+			<!-- results hospital table -->
+			<script>
+				$(function() {
+					$("button:first").click(function() {
+
+						try {
+ 						var HospitalAddress = $(".form-control-hospital-address").val();
+
+						var addressCheck = web3.isAddress(HospitalAddress);
+						if(addressCheck == true){
+								var result = contract.See_Authorised_Hospital(HospitalAddress, {from : account, gas : 3000000});
+								var address = result[0];
+								var id = result[1];
+								var name = result[2];
+								$("#hospital_address").text(address);
+								$("#hospital_id").text(id);
+								$("#hospital_name").text(name);
+								$(".hospital_info_result_table").show();
+								if(id == 0){
+									alert("Error: Couldnt find the Hospital Info in the BlockChain !");
+								}
+						}else{
+							alert("Error: Invalid Address !");
+							$(".hospital_info_result_table").hide();
+						}
+
+				    }
+						catch{
+				    alert("Error : Please check the information again !");
+				    }
+
+				    $("select").change(function() {
+ 						if($(this).val() == "employee_choice") {
+						$(".hospital_info_result_table").hide();
+						}
+				    });
+						$("select").change(function() {
+						if($(this).val() == "none") {
+						$(".hospital_info_result_table").hide();
+						$(".employee_info_result_table").hide();
+						}
+						});
+
+					});
+				});
+
+
+
+			</script>
+			<!-- result employee table -->
+
+			<script>
+				$(function() {
+					$("button:odd").click(function() {
+						try{
+					        var EmployeeAddress = $(".form-control-employee-address").val();
+
+									var addressCheck = web3.isAddress(EmployeeAddress);
+									if(addressCheck == true){
+										var result = contract.See_Employee_Info(EmployeeAddress, {from : account , gas : 3000000});
+				            var EmployeeID = result[0];
+				            var EmployeeName = result[1];
+				            var EmployeeHospitalName = result[2];
+
+
+				            $("#employee_id").text(EmployeeID);
+				            $("#employee_name").text(EmployeeName);
+				            $("#employee_hospital_name").text(EmployeeHospitalName);
+
+				            $(".employee_info_result_table").show();
+
+										if(EmployeeID == 0){
+											alert("Error: Couldnt find the Employee Info in the BlockChain !");
+										}
+									}
+									else{
+										alert("Error: Invalid Address !");
+										 $(".employee_info_result_table").hide();
+									}
+
+						}catch{
+								alert("Error : Please check the information again !");
+
+						}
+
+						$("select").change(function() {
+							if($(this).val() == "hospital_choice") {
+							$(".employee_info_result_table").hide();
+							}
+						});
+
+						$("select").change(function() {
+							if($(this).val() == "none") {
+								$(".hospital_info_result_table").hide();
+								$(".employee_info_result_table").hide();
+							}
+						});
+
+
+					});
+				});
+
+
+			</script>
+
+			<script>
+				$(function(){
+					$("#Account_Address").val( "Index: " + index +" Account address: " + account);
+				});
+			</script>
+
+			<script>
+				if(typeof web3 !== 'undefined'){
+					web3 = new Web3(web3.currentProvider);
+				} else {
+					web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:8545"));
+				}
+
+				var index = 0;
+				web3.eth.defaultAccount =  web3.eth.accounts[index];
+
+				var account = web3.eth.defaultAccount
+				var contract = web3.eth.contract([
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"name": "_TrHospitalName",
+				"type": "string"
+			}
+		],
+		"name": "Add_Employees",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"name": "_TrHospitaName",
+				"type": "string"
+			},
+			{
+				"name": "_ID_Record",
+				"type": "uint256"
+			},
+			{
+				"name": "_Record_Hashing",
+				"type": "string"
+			},
+			{
+				"name": "_TraineeCertificate",
+				"type": "string"
+			},
+			{
+				"name": "_Signature",
+				"type": "string"
+			}
+		],
+		"name": "Add_Records",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_HospitalID",
+				"type": "uint256"
+			},
+			{
+				"name": "_HospitalName",
+				"type": "string"
+			}
+		],
+		"name": "Authorise_Hospital",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"name": "_TraineeID",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteEmployee",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"name": "_HospitalID",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteHospital",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "getListOfTraineesRecords",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_HospitalID",
+				"type": "uint256"
+			}
+		],
+		"name": "delete_Hospital",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_HospitalAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeID",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_TrHospitaName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_ID_Record",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_Record_Hashing",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_TraineeCertificate",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "_Signature",
+				"type": "string"
+			}
+		],
+		"name": "add_Records",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "_NationalAuthority",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getFullRecords",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfHospitals",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_HospitalAddress",
+						"type": "address"
+					},
+					{
+						"name": "_HospitalID",
+						"type": "uint256"
+					},
+					{
+						"name": "_HospitalName",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTrainees",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_ID_Record",
+						"type": "uint256"
+					},
+					{
+						"name": "_Record_Hashing",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getListOfTraineesRecordsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "OfficialEmployees",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "Records",
+		"outputs": [
+			{
+				"components": [
+					{
+						"name": "_TraineeAddress",
+						"type": "address"
+					},
+					{
+						"name": "_TraineeID",
+						"type": "uint256"
+					},
+					{
+						"name": "_TraineeName",
+						"type": "string"
+					},
+					{
+						"name": "_TrHospitaName",
+						"type": "string"
+					},
+					{
+						"name": "_ID_Record",
+						"type": "uint256"
+					},
+					{
+						"name": "_Record_Hashing",
+						"type": "string"
+					},
+					{
+						"name": "_TraineeCertificate",
+						"type": "string"
+					},
+					{
+						"name": "_Signature",
+						"type": "string"
+					}
+				],
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"name": "sig",
+				"type": "bytes"
+			}
+		],
+		"name": "recoverSigner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_HospitalAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Authorised_Hospital",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Info",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_TraineeAddress",
+				"type": "address"
+			}
+		],
+		"name": "See_Employee_Latest_Records",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]).at('0x023403ab74f409120836426281a260f198e7d6fa');
+
+			</script>
+
+
+
+
+
+
+
+
+	</body>
+</html>

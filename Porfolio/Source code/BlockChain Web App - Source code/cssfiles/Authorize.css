@@ -1,0 +1,16 @@
+.wrapper {
+	margin: 50px;
+	padding: 50px;
+}
+
+#choice_section {
+	margin-bottom: 100px;
+}
+
+#hospital_form {
+	display: none;
+}
+
+#employee_form {
+	display: none;
+}
